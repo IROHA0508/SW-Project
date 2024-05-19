@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SW Project</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .responsive-div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        width: 100%;
+        position: relative;
+        gap: 2rem;
+      }
+
+      .responsive-div p {
+        align-self: stretch;
+        width: 100%;
+        font-size: 1rem;
+        font-weight: 500;
+        text-align: left;
+        color: #454545;
+      }
+
+      @media (max-width: 600px) {
+        .responsive-div {
+          width: 95vw;
+        }
+
+        .responsive-div p {
+          font-size: 0.8rem;
+        }
+      }
+    </style>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" />
+    <style>
+        .kaushan-script {
+            font-family: 'Kaushan Script', cursive;
+        }
+    </style>
+  </head>
+
+  <body>
+    <!-- 맨 위에 글자 -->
+    <div class = "responsive-div" id = "Naviagator">
+      <!-- <div style="width: 100%; max-width: 3150px; height: auto;"> -->
+      <div style="display: flex; justify-content: flex-start; align-items: flex-end; width: 100%; max-width: 3150px; height: auto; gap: 15vw; padding-left: 1.5vw; padding-right: 1.5vw; background: rgb(255, 255, 255);">
+        <p class="kaushan-script" style="width: 100%; max-width: 3150px; height: auto; font-size: 3rem; text-align: center; padding-left : 2vw; color: #000;">
+          Share Your Experience, Photo and Patience
+        </p>
+      
+        <div style="display: flex; justify-content: flex-start; align-items: flex-end; width: 100%; max-width: 3150px; height: auto; gap: 1vw; padding-left: 0.5vw; padding-right: 0.5vw; background: rgb(255, 255, 255); margin-left: 13vw;">
+          <div style="display: flex; justify-content: center; align-items: center; flex-grow: 0; flex-shrink: 0; width: 20%; height: 3.5vh; position: relative; gap: 8px; padding: 0.3vh 0.1vw; border-radius: 8px; background: rgba(0,0,0,0.56); box-shadow: 0px 1px 2px 0 rgba(0,0,0,0.05);" >
+            <p
+              style="flex-grow: 0; flex-shrink: 0; width: 100%; font-size: 1.5rem; text-align: center; color: #fff;"
+            >
+              <span
+                style="flex-grow: 0; flex-shrink: 0; width: 100%; font-size: 1.5rem; font-weight: 500; text-align: center; color: #fff;"
+                >About US</span
+              >
+            </p>
+          </div>
+
+          <div style="display: flex; justify-content: center; align-items: center; flex-grow: 0; flex-shrink: 0; width: 20%; height: 3.5vh; position: relative; gap: 10px; padding: 0.3vh 0.1vw; border-radius: 8px; background: rgba(0,0,0,0.56); box-shadow: 0px 1px 2px 0 rgba(0,0,0,0.05);" >
+            <p
+              style="flex-grow: 0; flex-shrink: 0; width: 100%; font-size: 1.5rem; text-align: center; color: #fff;"
+            >
+              <span
+                style="flex-grow: 0; flex-shrink: 0; width: 100%; font-size: 1.5rem; font-weight: 500; text-align: center; color: #fff;"
+                >Sign Up</span
+              >
+            </p>
+          </div>
+
+          <div style="display: flex; justify-content: center; align-items: center; flex-grow: 0; flex-shrink: 0; width: 20%; height: 3.5vh; position: relative; gap: 8px; padding: 0.3vh 0.1vw; border-radius: 8px; background: rgba(0,0,0,0.56); box-shadow: 0px 1px 2px 0 rgba(0,0,0,0.05);" >
+            <p
+              style="flex-grow: 0; flex-shrink: 0; width: 100%; font-size: 1.5rem; text-align: center; color: #fff;"
+            >
+              <span
+                style="flex-grow: 0; flex-shrink: 0; width: 100%; font-size: 1.5rem; font-weight: 500; text-align: center; color: #fff;"
+                >Sign In</span
+              >
+            </p>
+          </div>
+
+          <div style="display: flex; justify-content: center; align-items: center; flex-grow: 0; flex-shrink: 0; width: 20%; height: 3.5vh; position: relative; gap: 8px; padding: 0.3vh 0.1vw; border-radius: 8px; background: rgba(0,0,0,0.56); box-shadow: 0px 1px 2px 0 rgba(0,0,0,0.05);" >
+            <p
+              style="flex-grow: 0; flex-shrink: 0; width: 100%; font-size: 1.5rem; text-align: center; color: #fff;"
+            >
+              <span
+                style="flex-grow: 0; flex-shrink: 0; width: 100%; font-size: 1.5rem; font-weight: 500; text-align: center; color: #fff;"
+                >NYT</span
+              >
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 사진 -->
+    <div id = "Picture">
+      <img src="/source/main_pic1.png" style="width: 20.4241vw; height: 26.8481vw; position : absolute; left: 28.7532vw; top: 10.1013vw; object-fit: cover;"/>
+      <img src="/source/main_pic2.png" style="width: 10.7722vw; height: 14.2215vw; position : absolute; left: 17.1772vw; top: 5.3734vw; object-fit: cover;"/>
+      <img src="/source/main_pic3.jpeg" style="width: 16.3734vw; height: 21.1646vw; position : absolute; left: 11.5759vw; top: 20.1076vw; object-fit: cover;" />
+    </div>
+
+    <!-- 로그인 폼 -->
+    <form id="loginForm">
+      <div style="position : absolute; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 20.5380vw; height: 4.3354vw;  left: 52.2468vw; top: 16.2658vw; gap: 0.2532vw;">
+          <p style="align-self: stretch; flex-grow: 0; flex-shrink: 0; width: 20.5380vw; font-size: 1.5rem; font-weight: 500; text-align: left; color: #000; ">
+            Email Address
+          </p>
+          <div style="display: flex; justify-content: flex-start; align-items: flex-start; align-self: stretch; flex-grow: 0; flex-shrink: 0;  height: 2.5000vw;  gap: 0.2532vw; 
+          padding-left: 0.5063vw; padding-right: 0.5063vw; padding-top: 0.3797vw; padding-bottom: 0.3797vw; border-radius: 0.2532vw; background: #fff; 
+          border-width: 0.0316vw; border-color: #e0e0e0; box-shadow: 0vw 0.0316vw 0.0633vw 0 rgba(0,0,0,0.05);">
+              <input id="email_input" style="flex-grow: 1; width: 19.5253vw; font-size : 1.7rem; font-weight: 500; text-align: left; color: #000000; 
+              border: none; background: transparent;" type="email" placeholder="SWEngeneering@dgu.ac.kr">
+          </div>
+      </div>
+
+      <div style="position: absolute; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 20.5380vw; height: 4.3354vw;   left: 52.3418vw; top: 21.4557vw; gap: 0.2532vw;" >
+        <p style="align-self: stretch; flex-grow: 0; flex-shrink: 0; width: 20.5380vw; font-size: 1.5rem; font-weight: 500; text-align: left; color: #000; ">
+            Password
+        </p>
+        <div style="display: flex; justify-content: flex-start; align-items: flex-start; align-self: stretch; flex-grow: 0; flex-shrink: 0;  height: 2.5000vw;  gap: 0.2532vw; 
+        padding-left: 0.5063vw; padding-right: 0.5063vw; padding-top: 0.3797vw; padding-bottom: 0.3797vw; border-radius: 0.2532vw; background: #fff; 
+        border-width: 0.0316vw; border-color: #e0e0e0; box-shadow: 0vw 0.0316vw 0.0633vw 0 rgba(0,0,0,0.05);">
+            <input id="password_input" style="flex-grow: 1; width: 19.5253vw; font-size : 1.7rem; font-weight: 500; text-align: left; color: #000000; 
+            border: none; background: transparent;" type="password">
+        </div>
+
+        <button type="submit" style="position : absolute; display: flex; justify-content: center; align-items: center; width: 20.5380vw; height: 2.8937vw;  left: 0vw; top: 5.5vw; gap: 0.2532vw; 
+        padding-left: 0.7vw; padding-right: 0.7vw; padding-top: 0.3vw; padding-bottom: 0.3vw; 
+        border-radius: 0.2532vw; background: #c69affce; box-shadow: 0.0000vw 0.0316vw 0.0633vw 0 rgba(129, 150, 252, 0.05); 
+        flex-grow: 0; flex-shrink: 0; font-size: 1.5823vw; font-weight: 500; font-style: fantasy; text-align: center; color: #fff;">
+            로그인
+        </button>
+
+      </div>
+    </form>
+
+    <!-- 로그인 알림 JS -->
+    <script src = 'Login.js' ></script>
+      
+    </div>
+  </body>
+
+</html>
+
