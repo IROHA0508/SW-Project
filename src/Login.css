@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
+.responsive-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  position: relative;
+  gap: 2rem;
+}
+
+.responsive-div p {
+  align-self: stretch;
+  width: 100%;
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: left;
+  color: #000000;
+}
+
+@media (max-width: 600px) {
+  .responsive-div {
+    width: 95vw;
+  }
+
+  .responsive-div p {
+    font-size: 0.8rem;
+  }
+}
+
+.header-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 3150px;
+  height: auto;
+  gap: 15vw;
+  padding-left: 1.5vw;
+  padding-right: 1.5vw;
+  background: rgb(147, 112, 219);
+}
+
+.header-text {
+  width: 100%;
+  max-width: 3150px;
+  height: auto;
+  font-size: 5vw;
+  text-align: center;
+  padding-left: 2vw;
+  color: #000;
+  font-family: 'Kaushan Script', cursive;
+  margin: 0%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 40%;
+  max-width: 3150px;
+  height: auto;
+  gap: 1vw;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+  background: rgb(255, 255, 255);
+  margin-left: 13vw;
+}
+
+.button {
+  text-decoration: none;
+}
+
+.button button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 110%;
+  height: 3.5vh;
+  gap: 8px;
+  padding: 0.3vh 0.1vw;
+  border-radius: 8px;
+  /* background: rgba(0, 0, 0, 0.56); */
+  background: rgba(255, 186, 186, 0.56);
+  box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.05);
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.main-pic {
+  object-fit: cover;
+}
+
+.main-pic1 {
+  width: 20.4241vw;
+  height: 26.8481vw;
+  position: absolute;
+  left: 28.7532vw;
+  top: 10.1013vw;
+}
+
+.main-pic2 {
+  width: 10.7722vw;
+  height: 14.2215vw;
+  position: absolute;
+  left: 17.1772vw;
+  top: 5.3734vw;
+}
+
+.main-pic3 {
+  width: 16.3734vw;
+  height: 21.1646vw;
+  position: absolute;
+  left: 11.5759vw;
+  top: 20.1076vw;
+}
+
+.form-div {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.1vw; /* Reduced gap */
+
+  width: 500px;
+  height: 100%;
+  background-color: bisque;
+}
+
+
+.email-group p {
+  align-self: stretch;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 20.5380vw;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: left;
+  color: #000000;
+  background-color: #ffffff;
+  /* margin-bottom: 0.1vw; */
+}
+
+.input-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-self: stretch;
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: 2vw;
+  gap: 0vw;
+  /* padding-left: 0.5063vw;
+  padding-right: 0.5063vw;
+  padding-top: 0.3797vw;
+  padding-bottom: 0.3797vw; */
+  margin-top: 0.1vw;;
+  border-radius: 0.2532vw;
+  background: #fff;
+  border-width: 0.0316vw;
+  border-color: #000000;
+  box-shadow: 0vw 0.0316vw 0.0633vw 0 rgba(0, 0, 0, 0.05);
+}
+
+#email_input,
+#password_input {
+  flex-grow: 1;
+  width: 19.5253vw;
+  font-size: 1.7rem;
+  font-weight: 500;
+  text-align: left;
+  color: #000000;
+  border: 1px solid #0e0e0e;
+  border-radius: 8px; /* Rounded corners */
+  padding: 0.5rem; /* Add some padding for better appearance */
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05); /* Optional: add a subtle shadow */
+  background: transparent;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+#loginForm {
+  height: 600px; /* 예시 높이 설정 */
+}
+
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute; /* 부모 컨테이너의 위치를 절대값으로 설정 */
+  left: 52.2468vw;
+  top: 11.2658vw;
+
+  width: 23%; /* 부모 컨테이너의 폭을 100%로 설정 */
+  height: 78%;
+
+  border-radius: 8px;
+  border: 1px solid #0e0e0e;
+}
+
+.email-group, .password-group, .button-group-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20.5380vw; /* 같은 폭을 사용 */
+}
+
+.login-button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 60px;
+}
+
+.login-button-group p {
+  display: flex; /* Ensure flex display for the container */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center; /* Center text inside */
+  font-size: 1.2vw !important;  
+  margin-top: 10px; /* Remove default margin */
+  margin-bottom: 10px;
+  width: 100%; /* Take the full width of the parent */
+  height: 100%; /* Take the full height of the parent */
+}
+
+.login-button-group .login-button, .login-button-group .guest-login-button  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20.5380vw;
+  height: 2.8937vw;
+  gap: 0.2532vw;
+  padding-left: 0.7vw;
+  padding-right: 0.7vw;
+  padding-top: 0.3vw;
+  padding-bottom: 0.3vw;
+  /* margin-top: 2px; */
+  border-radius: 0.2532vw;
+  background: rgb(147, 112, 219);
+  box-shadow: 0.0000vw 0.0316vw 0.0633vw 0 rgba(129, 150, 252, 0.05);
+  font-size: 1.5823vw;
+  font-weight: 500;
+  font-style: fantasy;
+  text-align: center;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
