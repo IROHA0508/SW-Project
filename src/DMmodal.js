@@ -7,13 +7,33 @@ import message_send_button from './message_send_button.png';
 
 
 function DMModal({ isOpen, closeModal, current_username, receiver_username }) {
-  const [messages, setMessages] = useState([]);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
 
-  const sendMessage = () => {
-    if (message.trim() !== "") {
-      setMessages([...messages, { sender: 'me', text: message }]);
-      setMessage("");
+  const sendMessage = async () => {
+    try {
+      const response = await fetch('/api/saveDM', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          sender: current_username,
+          receiver: receiver_username,
+          message: message,
+        }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert('메세지가 성공적으로 저장되었습니다.');
+        setMessage('');
+        closeModal();
+      } else {
+        alert(data.error || '메세지 전송 중 오류가 발생했습니다.');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      alert('메세지 전송 중 오류가 발생했습니다.');
     }
   };
 
@@ -25,12 +45,12 @@ function DMModal({ isOpen, closeModal, current_username, receiver_username }) {
       className="custom-modal-content"
     >
 
-      <div className="modal-header">
-        <div className = "big-infocontainer">
-          <div id = 'senderinfo-container' className='info-container'>
+      <div className='modal-header'>
+        <div className = 'big-infocontainer'>
+          <div className = 'info-container'>
             <p>보내는 사람 : {current_username}</p>
           </div>
-          <div id = 'receiverinfo-container' className='info-container'>
+          <div className='info-container'>
             <p> 받는 사람  : {receiver_username}</p>
           </div>
         </div>
@@ -55,8 +75,7 @@ function DMModal({ isOpen, closeModal, current_username, receiver_username }) {
           src={message_send_button} 
           className='message-send-button' 
           alt='send'
-          onClickCapture={sendMessage}
-          // onClick={alert("메세지가 전송되었습니다")}
+          onClick={sendMessage}
         />
       </div>
     </Modal>

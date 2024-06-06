@@ -21,7 +21,7 @@
   margin: 0; /* 마진 제거 */
 
   width: 100%;
-  height: 17%;
+  height: 15%;
   align-items: center;
   background-color: lightblue;
 
@@ -63,8 +63,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 7%; /* Takes up 20% of modal-header */
-  height: 90%;
+  width: 10%; /* Takes up 20% of modal-header */
+  height: 100%;
   border: 1px solid black; /* For debugging purposes */
 }
 

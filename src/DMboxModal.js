@@ -17,15 +17,15 @@ function DMboxModal({ isOpen, closeModal, current_username}) {
       className="custom-modal-dmbox-content"
     >
 
-      <div className="modal-header">
-        <div className = "big-infocontainer">
-          <div id = 'senderinfo-container' className='info-container'>
+      <div className='boxmodal-header'>
+        <div className = 'boxbig-infocontainer'>
+          <div className='bosinfo-container'>
             <p>{current_username}의 DM</p>
           </div>
         </div>
         
-        <div className = "close-button-container">
-          <img src={close_button} className='close-button' alt='close' onClick={closeModal}/>
+        <div className = 'boxclose-button-container'>
+          <img src={close_button} className='boxclose-button' alt='close' onClick={closeModal}/>
         </div>  
       </div>
     </Modal>

@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, session
 from create_db import get_db_connection
 import sqlite3
+from datetime import datetime
 
 auth = Blueprint('auth', __name__)
 
@@ -100,3 +101,52 @@ def get_user_nickname():
     
     users_list = [{'id': user[0], 'nickname': user[1]} for user in results]
     return jsonify(users_list)
+
+@auth.route('/api/saveDM', methods=['POST'])
+def saveDM():
+    if 'email' not in session:
+        return jsonify({'error': '인증되지 않은 사용자'}), 401
+    
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({'error': 'Invalid request data'}), 400
+
+        sender_username = data.get('sender')
+        receiver_username = data.get('receiver')
+        message = data.get('message')
+
+        if not sender_username or not receiver_username or not message:
+            return jsonify({'error': '필수 데이터가 누락되었습니다.'}), 400
+
+        sender_id = get_userid_by_username(sender_username)
+        receiver_id = get_userid_by_username(receiver_username)    
+
+        if sender_id is None or receiver_id is None:
+            return jsonify({'error': '유효하지 않은 수신자나 송신자입니다'}), 400
+
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute(
+            'INSERT INTO messages (sender_id, receiver_id, message, timestamp, status) VALUES (?, ?, ?, ?, ?)',
+            (sender_id, receiver_id, message, datetime.now(), 'unread')
+        )
+        conn.commit()
+        conn.close()
+
+        return jsonify({'message': '메세지가 전송되었습니다.'}), 201
+
+    except Exception as e:
+        # Log the error e for debugging
+        return jsonify({'error': 'Internal Server Error', 'details': str(e)}), 500
+
+def get_userid_by_username(username):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT id FROM users WHERE nickname = ?', (username,))
+    user_id = cursor.fetchone()
+    conn.close()    
+    if user_id is not None:
+        return user_id[0]
+    else:
+        return None
