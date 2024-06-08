@@ -101,3 +101,15 @@
   border-radius: 4px; /* 모서리 둥글게 */
   box-sizing: border-box; /* 박스 모델을 테두리와 패딩 포함하도록 설정 */
 }
+
+
+.box-receivedDM{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: 88%;
+  border: 1px solid black;
+  background-color: rgb(163, 70, 70);
+}

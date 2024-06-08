@@ -29,10 +29,13 @@ function Main() {
   const [modalDMboxIsOpen, setDMboxModalIsOpen] = useState(false);
   // 서버에서 사용자 닉네임 받아오기 -> userList 채울 때 사용
   const [userList_name, setUserList_name] = useState([]);
+  //업로드 사진 목록
+  const [uploadPhotos, setUploadPhotos] = useState([]);
 
   useEffect(()=>{
     fetchUserInfo();
     fetchAllUserNickname();
+    fetchUploadPhotos();
   }, []);
  
   const fetchUserInfo = async () => {
@@ -97,6 +100,26 @@ function Main() {
     }
   }
 
+  // 업로드 사진 목록 가져오기
+const fetchUploadPhotos = async () => {
+  try {
+  const response = await fetch('/api/getuploadphotos', {
+    method: 'GET',
+    headers: {
+    'Content-Type': 'application/json',
+    },
+  });
+  
+  if (response.ok) {
+    const data = await response.json();
+    setUploadPhotos(data);
+    } else {
+      console.error('사진 목록 가져오는데 실패했습니다');
+    }
+  } catch (error) {
+    console.error('사진 목록 가져오는 중 오류 발생', error);
+  }
+  };
 
   //모달 열기
   const openModal = () => {
@@ -157,6 +180,20 @@ function Main() {
           <div className='main-user-content'>
             <div className='main-userPhoto'>
 
+              {/* {uploadPhotos.map(photo => (
+                <div key={photo.id}>
+                  <UserPhotoComponent
+                    photoId={photo.id}
+                    current_user={nickname}
+                    profileImage={profile}
+                    poseted_username={photo.nickname}
+                    photos={`data:image/jpeg;base64,${photo.photo_data}`}
+                    hashtags={photo.hashtags}
+                    description={photo.description}
+                  />
+                </div>
+              ))} */}
+
               <UserPhotoComponent 
                 current_user={nickname}
                 profileImage={profile}
@@ -164,24 +201,6 @@ function Main() {
                 photos={photo_example2}
                 hashtags={['아이유']}
                 description="아이유 인천공항 (사진에 대한 설명이 들어갑니다)"
-              />
-
-              <UserPhotoComponent   
-                current_user={nickname}
-                profileImage={profile}
-                posted_username="유애나222222222"
-                photos={photo_example1}
-                hashtags={['IU']}
-                description="아이유 사진 2 (사진에 대한 설명이 들어갑니다)"
-              />
-
-              <UserPhotoComponent 
-                current_user={nickname}
-                profileImage={profile}
-                posted_username="유애나3333333"
-                photos={photo_example3}
-                hashtags={['IU', '아이유']}
-                description="아이유 사진 3 (사진에 대한 설명이 들어갑니다)"
               />
             </div>
             

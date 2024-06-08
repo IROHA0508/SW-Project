@@ -76,3 +76,22 @@
   max-height: 100%;     /* 이미지의 최대 높이를 컨테이너의 높이에 맞게 설정 */
   object-fit: contain;  /* 이미지가 컨테이너에 맞도록 설정 */
 }
+
+.DM-button {
+  width: 10%; /* 이미지의 너비를 자동으로 설정 */
+  height: 100%; /* 이미지의 높이를 부모 요소의 높이에 맞게 설정 */
+  max-height: 80%; /* 이미지의 최대 높이를 부모 요소의 높이에 맞게 설정 */
+  object-fit: contain; /* 이미지가 컨테이너에 맞도록 설정 */
+  /* margin-left: auto; */
+  cursor: pointer; /* 커서를 포인터로 변경 */
+}
+
+
+.option-button{
+  width: 10%; /* 이미지의 너비를 자동으로 설정 */
+  height: 50%; /* 이미지의 높이를 부모 요소의 높이에 맞게 설정 */
+  max-height: 80%; /* 이미지의 최대 높이를 부모 요소의 높이에 맞게 설정 */
+  object-fit: contain; /* 이미지가 컨테이너에 맞도록 설정 */
+  /* margin-left: auto; */
+  cursor: pointer; /* 커서를 포인터로 변경 */
+}

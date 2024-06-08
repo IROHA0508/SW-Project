@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import './photoUpload.css'
 
 function UploadModal({ closeModal }){
-    const [photo, setPhoto] = useState('');
+    const [photo, setPhoto] = useState(null);
     const [description, setDescription] = useState('');
     const [keywords, setKeywords] = useState('');
 
     const handlePhotoUpload = (e) => {
-        const file = e.target.files[0];
-        setPhoto(URL.createObjectURL(file));
+        const photo = e.target.files[0];
+        setPhoto(photo);
     }
 
     const handleSubmit = async() => {
@@ -21,10 +21,12 @@ function UploadModal({ closeModal }){
             const response = await fetch('/api/upload', {
                 method: 'POST',
                 body: formData,
+                credentials: 'include'
             });
 
             if(response.ok){
                 closeModal();   //모달 닫기
+                window.location.reload();
             } else {
                 console.error('사진 업로드에 실패했습니다');
             }
@@ -38,7 +40,7 @@ function UploadModal({ closeModal }){
             <div className='modal-content'>
                 <h2>Upload Photo</h2>
                 <div className='preview-image'>
-                    {photo && <img src={photo} alt='Preview' />}
+                    {photo && <img src={URL.createObjectURL(photo)} alt='Preview' />}
                 </div>
                 <input type='file' accept='image/*' onChange={handlePhotoUpload} />
                 <textarea

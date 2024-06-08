@@ -1,0 +1,84 @@
+/* 모달 전체 스타일 */
+.modal {
+  position: fixed; /* 화면에 고정되어 위치 */
+  top: 50%; /* 화면 위쪽에서 절반의 위치 */
+  left: 50%; /* 화면 왼쪽에서 절반의 위치 */
+  transform: translate(-50%, -50%); /* 중앙 정렬을 위해 이동 */
+  background-color: #333; /* 배경색 */
+  z-index: 1000; /* 다른 모달보다 위에 표시되도록 z-index 설정 */
+}
+
+/* 모달 내용 스타일 */
+.modal-content {
+  background-color: #fff; /* 내용 배경색 */
+  padding: 20px; /* 내부 여백 */
+  border-radius: 5px; /* 테두리 모서리 둥글게 */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+/* 제목 스타일 */
+.modal-content h2 {
+  margin-top: 0; /* 위 여백 없애기 */
+  margin-bottom: 20px; /* 아래 여백 추가 */
+}
+
+/* 이미지 미리보기 스타일 */
+.preview-image {
+  width: 400px; /* 가로 크기 고정 */
+  height: 400px; /* 세로 크기 고정 */
+  display: flex; /* Flexbox 사용 */
+  justify-content: center; /* 가로 가운데 정렬 */
+  align-items: center; /* 세로 가운데 정렬 */
+  overflow: hidden; /* 넘치는 부분 잘라내기 */
+  position: relative; /* 상대 위치 지정 */
+}
+
+.preview-image img {
+  max-width: 100%; /* 최대 너비 */
+  max-height: 100%; /* 최대 높이 */
+  width: auto; /* 가로 크기 자동 조정 */
+  height: auto; /* 세로 크기 자동 조정 */
+  object-fit: cover; /* 요소에 맞게 조정 */
+  position: absolute; /* 절대 위치 지정 */
+  top: 50%; /* 위에서 50% 위치 */
+  left: 50%; /* 왼쪽에서 50% 위치 */
+  transform: translate(-50%, -50%); /* 중앙으로 이동 */
+}
+
+/* 입력 필드 스타일 */
+.modal-content input,
+.modal-content textarea {
+  width: 100%; /* 너비 100% */
+  margin-bottom: 10px; /* 아래 여백 */
+  padding: 8px; /* 내부 여백 */
+  border: 1px solid #ccc; /* 테두리 */
+  border-radius: 3px; /* 모서리 둥글게 */
+}
+
+/* 버튼 스타일 */
+.modal-content button {
+  padding: 10px 20px; /* 내부 여백 */
+  background-color: rgb(147, 112, 219); /* 배경색 */
+  color: #fff; /* 글자색 */
+  border: none; /* 테두리 없음 */
+  border-radius: 3px; /* 모서리 둥글게 */
+  cursor: pointer; /* 커서 모양 변경 */
+}
+
+/* 버튼 컨테이너 스타일 */
+.button-container {
+  display: flex; /* Flexbox 사용 */
+  justify-content: flex-end; /* 우측 정렬 */
+  flex-wrap: nowrap; /* 줄 바꿈 방지 */
+  width: 55%; /* 너비 */
+}
+
+/* 버튼 간격 조절 */
+.modal-content button + button {
+  margin-left: 5px; /* 버튼 사이 간격 */
+}
+
+/* 버튼 호버 스타일 */
+.modal-content button:hover {
+  background-color: #0056b3; /* 호버 시 배경색 변경 */
+}

@@ -33,7 +33,6 @@ def init_db():
         ) 
     ''')
 
-
     # message 관련 db 생성  
     conn.execute('''
         CREATE TABLE IF NOT EXISTS messages (
