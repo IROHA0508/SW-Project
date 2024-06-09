@@ -33,7 +33,7 @@
   position: relative; /* 상대 위치 지정 */
 }
 
-.preview-image img {
+.preview-images img {
   max-width: 100%; /* 최대 너비 */
   max-height: 100%; /* 최대 높이 */
   width: auto; /* 가로 크기 자동 조정 */

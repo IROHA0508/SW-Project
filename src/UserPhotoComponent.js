@@ -11,7 +11,7 @@ import PhotoEdit from './photoEdit';
 
 import option_button from './option_button.png';
 
-function UserPhotoComponent({ photoId, current_user, profileImage, posted_username, photos, hashtags, description }) {
+function UserPhotoComponent({ postId, current_user, profileImage, posted_username, photos, hashtags, description }) {
   const settings = {
     dots: true,
     // infinite: true,
@@ -49,7 +49,7 @@ function UserPhotoComponent({ photoId, current_user, profileImage, posted_userna
   const handleDeleteClick = async () => {
     if (window.confirm('이 게시물을 삭제하시겠습니까?')){
       try {
-        const response = await fetch(`/api/photo/${photoId}`, {
+        const response = await fetch(`/api/post/${postId}`, {
           method: 'DELETE',
           credentials: 'include'
         })
@@ -101,7 +101,13 @@ function UserPhotoComponent({ photoId, current_user, profileImage, posted_userna
             ))}
           </Slider> */}
           {/* <img src={photo_example1} className='photo' alt='photo' /> */}
-          <img src={photos} className='photo' alt='photo' />
+          <Slider {...settings}>
+            {photos.map((photo, index) => (
+              <div key={index}>
+                <img src={photo} className='photo' alt={`photo${index}`} />
+              </div>
+            ))}
+          </Slider>
           {/* <img src={photo_example1} className='photo' alt='photo' /> */}
         </div>
 
@@ -117,7 +123,7 @@ function UserPhotoComponent({ photoId, current_user, profileImage, posted_userna
       </div>
 
       {/* photoEdit 모달 레이어 창 */}
-      {PhotomodalIsOpen && <PhotoEdit photoId={photoId} closeModal={closePhotoModal} />}
+      {PhotomodalIsOpen && <PhotoEdit postId={postId} closeModal={closePhotoModal} />}
     </div>
   );
 }

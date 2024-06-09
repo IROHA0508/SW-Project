@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import './photoUpload.css'
 
 function UploadModal({ closeModal }){
-    const [photo, setPhoto] = useState(null);
+    const [photos, setPhotos] = useState([]);
     const [description, setDescription] = useState('');
     const [keywords, setKeywords] = useState('');
 
     const handlePhotoUpload = (e) => {
-        const photo = e.target.files[0];
-        setPhoto(photo);
+        const uploadedPhotos = e.target.files;
+        setPhotos([...photos, ...uploadedPhotos]);
     }
 
     const handleSubmit = async() => {
         const formData = new FormData();
-        formData.append('photo', photo);
+        photos.forEach(photo => {
+            formData.append('photos', photo);
+        })
         formData.append('description', description);
         formData.append('keywords', keywords);
 
@@ -24,11 +26,13 @@ function UploadModal({ closeModal }){
                 credentials: 'include'
             });
 
+            const responseData = await response.json();
+
             if(response.ok){
                 closeModal();   //모달 닫기
                 window.location.reload();
             } else {
-                console.error('사진 업로드에 실패했습니다');
+                console.error('사진 업로드에 실패했습니다', responseData.error);
             }
         } catch (error){
             console.error('사진 업로드 중 오류 발생', error);
@@ -39,10 +43,12 @@ function UploadModal({ closeModal }){
         <div className='modal'>
             <div className='modal-content'>
                 <h2>Upload Photo</h2>
-                <div className='preview-image'>
-                    {photo && <img src={URL.createObjectURL(photo)} alt='Preview' />}
+                <div className='preview-images'>
+                    {photos.map((photo, index) => (
+                            <img key={index} src={URL.createObjectURL(photo)} alt={`Preview ${index}`} />
+                        ))}
                 </div>
-                <input type='file' accept='image/*' onChange={handlePhotoUpload} />
+                <input type='file' accept='image/*' onChange={handlePhotoUpload} multiple/>
                 <textarea
                     placeholder='Description'
                     value={description}
