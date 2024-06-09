@@ -81,7 +81,7 @@ def get_upload_photos():
             FROM photos
             JOIN post ON photos.post_id = post.id
             JOIN users ON post.user_id = users.id
-            LEFT JOIN keywords ON photos.id = keywords.photo_id
+            LEFT JOIN keywords ON photos.id = keywords.post_id
             GROUP BY post.id
             ORDER BY post.upload_date DESC
         """)

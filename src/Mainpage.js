@@ -112,6 +112,7 @@ const fetchUploadPhotos = async () => {
   
   if (response.ok) {
     const data = await response.json();
+    console.log(data);
     setUploadPhotos(data);
     } else {
       console.error('사진 목록 가져오는데 실패했습니다');
@@ -180,28 +181,28 @@ const fetchUploadPhotos = async () => {
           <div className='main-user-content'>
             <div className='main-userPhoto'>
 
-              {/* {uploadPhotos.map(photo => (
+              {uploadPhotos.map(photo => (
                 <div key={photo.id}>
                   <UserPhotoComponent
-                    photoId={photo.id}
+                    postoId={photo.id}
                     current_user={nickname}
                     profileImage={profile}
-                    poseted_username={photo.nickname}
-                    photos={`data:image/jpeg;base64,${photo.photo_data}`}
+                    posted_username={photo.nickname}
+                    photos={[`data:image/jpeg;base64,${photo.photo_data}`]}
                     hashtags={photo.hashtags}
                     description={photo.description}
                   />
                 </div>
-              ))} */}
+              ))}
 
-              <UserPhotoComponent 
+              {/* <UserPhotoComponent 
                 current_user={nickname}
                 profileImage={profile}
                 posted_username="유애나"
-                photos={photo_example2}
+                photos={example_photos}
                 hashtags={['아이유']}
                 description="아이유 인천공항 (사진에 대한 설명이 들어갑니다)"
-              />
+              /> */}
             </div>
             
             <div className='userList'>
