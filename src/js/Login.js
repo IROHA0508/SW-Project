@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useActionData, useNavigate } from 'react-router-dom';
 
-import './Login.css';
-import mainPic1 from './main_pic1.png';
-import mainPic2 from './main_pic2.png';
-import mainPic3 from './main_pic3.jpeg';
+import '../css/Login.css';
+import mainPic1 from '../image/main_pic1.png';
+import mainPic2 from '../image/main_pic2.png';
+import mainPic3 from '../image/main_pic3.jpeg';
 
 import Common_header from './common_header';
 

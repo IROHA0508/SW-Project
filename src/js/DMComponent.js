@@ -1,7 +1,7 @@
 import React from 'react';
 
-import './DMComponent.css';
-import profile from './profile_default.jpg';
+import '../css/DMComponent.css';
+import profile from '../image/profile_default.jpg';
 
 function DMComponent({senderName, receivedDM, DMsenttime, DMstatus}) {
   return (

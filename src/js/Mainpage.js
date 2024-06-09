@@ -4,8 +4,8 @@ import Slider from 'react-slick'; // 사진 슬라이더
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
-import './Mainpage.css';
-import './DMmodal.css';
+import '../css/Mainpage.css';
+import '../css/DMmodal.css';
 
 import UserComponent from './usercomponent'; // userComponent 파일 import
 import UploadModal from './photoUpload';    // 업로드 모달 파일 import
@@ -13,11 +13,11 @@ import UserPhotoComponent from './UserPhotoComponent';  //userPhotoComponent 파
 import DMboxModal from './DMboxModal';  // DMboxModal 파일 import
 
 // 이미지 import
-import searchicon from './search_icon.png';
-import profile from './profile_default.jpg';
-import photo_example1 from './아이유 수능 응원 메세지.jpeg'
-import photo_example2 from './아이유 인천공항.jpg'
-import photo_example3 from './아이유 드림 네이버 포스트.jpeg'
+import searchicon from '../image/search_icon.png';
+import profile from '../image/profile_default.jpg';
+import photo_example1 from '../image/아이유 수능 응원 메세지.jpeg'
+import photo_example2 from '../image/아이유 인천공항.jpg'
+import photo_example3 from '../image/아이유 드림 네이버 포스트.jpeg'
 
 
 function Main() {

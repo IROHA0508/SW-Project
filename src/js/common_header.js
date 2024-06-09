@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useActionData, useNavigate } from 'react-router-dom';
-import './common_header.css';
+import '../css/common_header.css';
 
 function Common_header() {
   return (

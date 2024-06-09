@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './photoEdit.css';
+import '../css/photoEdit.css';
 
 function PhotoEdit({ photoId, closeModal }) {
     const [photo, setPhoto] = useState('');

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './photoUpload.css'
+import '../css/photoUpload.css'
 
 function UploadModal({ closeModal }){
     const [photo, setPhoto] = useState(null);

@@ -1,6 +1,6 @@
 // Chat.js
 import React, { useState } from 'react';
-import './Chat.css';
+import '../css/Chat.css';
 
 function Chat({ username, onClose }) {
   const [messages, setMessages] = useState([]);

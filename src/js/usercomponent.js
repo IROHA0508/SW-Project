@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import './usercomponent.css';
+import '../css/usercomponent.css';
 
 function UserComponent({ profileImage, username }) {
   return (
