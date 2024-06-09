@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 
 import './DMboxmodal.css';
 import close_button from './close_button.png';
+// import close_button from './close_button.jpg';
 import DMComponent from './DMComponent';
 
 function DMboxModal({ isOpen, closeModal, current_username }) {
@@ -43,16 +44,26 @@ function DMboxModal({ isOpen, closeModal, current_username }) {
 
       <div className='boxmodal-header'>
         <div className='boxbig-infocontainer'>
-          <div className='bosinfo-container'>
-            <p>{current_username}의 DM</p>
+          <div className='boxinfo-container'>
+            <p><span>{current_username}</span>의 DM</p>
           </div>
         </div>
+        
         <div className='boxclose-button-container'>
           <img src={close_button} className='boxclose-button' alt='close' onClick={closeModal} />
         </div>
       </div>
 
       <div className='box-receivedDM'>
+
+        <div className='boxmodal-rowinformation header'>
+          <div className='column profile-picture'>프로필</div>
+          <div className='column sender-name'>보낸 사람</div>
+          <div className='column title'>제목</div>
+          <div className='column read-status'>읽음</div>
+          <div className='column sent-time'>보낸 시간</div>
+        </div>
+
         {receivedDMs.map(dm => (
           <DMComponent
             key={dm.id}

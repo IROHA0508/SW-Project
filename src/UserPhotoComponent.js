@@ -10,15 +10,6 @@ import DMModal from './DMmodal';
 import PhotoEdit from './photoEdit';
 
 import option_button from './option_button.png';
-{/* <UserPhotoComponent 
-                current_user={nickname}
-                profileImage={profile}
-                posted_username="유애나"
-                photos={photo_example2}
-                hashtags={['아이유']}
-                description="아이유 인천공항 (사진에 대한 설명이 들어갑니다)"
-              />
-               */}
 
 function UserPhotoComponent({ photoId, current_user, profileImage, posted_username, photos, hashtags, description }) {
   const settings = {

@@ -8,6 +8,7 @@ import message_send_button from './message_send_button.png';
 
 function DMModal({ isOpen, closeModal, current_username, receiver_username }) {
   const [message, setMessage] = useState('');
+  const [title, setTitle] = useState('');
 
   const sendMessage = async () => {
     try {
@@ -20,6 +21,7 @@ function DMModal({ isOpen, closeModal, current_username, receiver_username }) {
           sender: current_username,
           receiver: receiver_username,
           message: message,
+          title: title,
         }),
       });
 
@@ -27,6 +29,7 @@ function DMModal({ isOpen, closeModal, current_username, receiver_username }) {
       if (response.ok) {
         alert('메세지가 성공적으로 저장되었습니다.');
         setMessage('');
+        setTitle('');
         closeModal();
       } else {
         alert(data.error || '메세지 전송 중 오류가 발생했습니다.');
@@ -58,6 +61,16 @@ function DMModal({ isOpen, closeModal, current_username, receiver_username }) {
         <div className = "close-button-container">
           <img src={close_button} className='close-button' alt='close' onClick={closeModal}/>
         </div>  
+      </div>
+
+      <div className="modal-message-titleinput">
+        <input
+          id="title_input"
+          type="text"
+          placeholder="제목을 입력하세요"
+          value = {title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
       </div>
 
       <div className="modal-message-input">
