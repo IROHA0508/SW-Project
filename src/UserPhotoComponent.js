@@ -10,15 +10,8 @@ import DMModal from './DMmodal';
 import PhotoEdit from './photoEdit';
 
 import option_button from './option_button.png';
-{/* <UserPhotoComponent 
-                current_user={nickname}
-                profileImage={profile}
-                posted_username="유애나"
-                photos={photo_example2}
-                hashtags={['아이유']}
-                description="아이유 인천공항 (사진에 대한 설명이 들어갑니다)"
-              />
-               */}
+
+import photo_example1 from './아이유 수능 응원 메세지.jpeg';
 
 function UserPhotoComponent({ postId, current_user, profileImage, posted_username, photos, hashtags, description }) {
   const settings = {
@@ -110,14 +103,14 @@ function UserPhotoComponent({ postId, current_user, profileImage, posted_usernam
             ))}
           </Slider> */}
           {/* <img src={photo_example1} className='photo' alt='photo' /> */}
-          <Slider {...settings}>
+          {/* <Slider {...settings}>
             {photos.map((photo, index) => (
               <div key={index}>
                 <img src={photo} className='photo' alt={`photo${index}`} />
               </div>
             ))}
-          </Slider>
-          {/* <img src={photo_example1} className='photo' alt='photo' /> */}
+          </Slider> */}
+          <img src={photo_example1} className='photo' alt='photo' />
         </div>
 
         {/* 해시태그 달 곳 */}

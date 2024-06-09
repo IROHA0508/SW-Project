@@ -17,6 +17,7 @@ def saveDM():
 
         sender_username = data.get('sender')
         receiver_username = data.get('receiver')
+        title = data.get('title')
         message = data.get('message')
 
         if not sender_username or not receiver_username or not message:
@@ -30,9 +31,10 @@ def saveDM():
 
         conn = get_db_connection()
         cursor = conn.cursor()
+        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         cursor.execute(
-            'INSERT INTO messages (sender_id, receiver_id, message, timestamp, status) VALUES (?, ?, ?, ?, ?)',
-            (sender_id, receiver_id, message, datetime.now(), 'unread')
+            'INSERT INTO messages (sender_id, receiver_id, title, message, timestamp, status) VALUES (?, ?, ?, ?, ?)',
+            (sender_id, receiver_id, title, message, timestamp, '안 읽음')
         )
         conn.commit()
         conn.close()
