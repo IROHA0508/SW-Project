@@ -1,0 +1,84 @@
+.input-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-self: stretch;
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: 2vw;
+  gap: 0vw;
+  /* padding-left: 0.5063vw;
+  padding-right: 0.5063vw;
+  padding-top: 0.3797vw;
+  padding-bottom: 0.3797vw; */
+  margin-top: 0.1vw;;
+  border-radius: 0.2532vw;
+  background: #fff;
+  border-width: 0.0316vw;
+  border-color: #000000;
+  box-shadow: 0vw 0.0316vw 0.0633vw 0 rgba(0, 0, 0, 0.05);
+}
+
+.input-container input {
+  width: 100%; /* 입력칸의 너비를 100%로 설정하여 부모 요소의 너비에 맞춤 */
+  height: 40px; /* 입력칸의 높이를 40px로 설정 */
+  font-size: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-end; /* 가로 방향 가운데 정렬 */
+  align-items: center; /* 세로 방향 가운데 정렬 */
+  height: 100vh; /* 화면 전체 높이만큼 컨테이너 높이 설정 */
+  margin-right: 40px;
+  font-size: 20px;
+}
+
+.form-container {
+  border: 2px solid #000; /* 폼에만 테두리 설정 */
+  width: 370px;
+  height: 700px;
+  padding: 80px; /* 내부 여백 설정 */
+  border-radius: 20px; /* 테두리의 둥근 모서리 설정 */
+}
+
+.form-container h1 {
+  text-align: center; /* 텍스트를 수평 가운데 정렬 */
+  font-size: 50px;
+}
+
+.form-container button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 60px;
+  font-size: 20px;
+}
+
+.signup-button {
+  /* position: absolute; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18.7380vw;
+  height: 2.8937vw;
+  left: 0vw;
+  top: 7vw;
+  gap: 0.2532vw;
+  padding-left: 0.7vw;
+  padding-right: 0.7vw;
+  padding-top: 0.3vw;
+  padding-bottom: 0.3vw;
+  border-radius: 0.2532vw;
+  background: rgb(147, 112, 219);
+  /* #c69affce */
+  box-shadow: 0.0000vw 0.0316vw 0.0633vw 0 rgba(129, 150, 252, 0.05);
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 1.5823 vw;
+  font-weight: 500;
+  font-style: fantasy;
+  text-align: center;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

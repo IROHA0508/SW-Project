@@ -1,0 +1,169 @@
+/* 모달 스타일 설정 */
+.custom-modal-dmbox-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+  margin: auto;
+  background-color: rgb(204, 113, 204);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.boxmodal-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding: 0; /* 패딩 제거 */
+  margin: 0; /* 마진 제거 */
+
+  width: 100%;
+  height: 10%;
+  align-items: center;
+  background-color: lightblue;
+
+  /* 디버깅용으로 경계선 */
+  border: 1px solid black;
+}
+
+.boxbig-infocontainer{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%; /* Takes up 80% of modal-header */
+  height: 100%;
+  border: 1px solid black; /* For debugging purposes */
+}
+
+.boxinfo-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  /* padding: 0 10px; */
+  /* 디버깅용으로 경계선 */
+  border: 1px solid black;
+}
+
+.boxinfo-container p {
+  font-size: 2.5em; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+
+  margin: 0px;
+}
+
+.boxinfo-container p span {
+  /* veri peri */
+  color: rgb(102, 103, 171);
+}
+
+.boxclose-button-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 7%; /* Takes up 20% of modal-header */
+  height: 90%;
+  border: 1px solid black; /* For debugging purposes */
+}
+
+.boxclose-button{
+  width: auto;          /* 이미지의 너비를 자동으로 설정 */
+  height: 80%;         /* 이미지의 높이를 부모 요소의 높이에 맞게 설정 */
+  max-height: 80%;     /* 이미지의 최대 높이를 부모 요소의 높이에 맞게 설정 */
+  object-fit: contain;  /* 이미지가 컨테이너에 맞도록 설정 */
+  /* margin-right: 0.5vw; */
+  /* border-radius: 50%;/ */
+  cursor: pointer;
+}
+
+.box-receivedDM{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: 88%;
+  border: 1px solid black;
+  background-color: rgb(163, 70, 70);
+}
+
+.box-receivedDM {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.boxmodal-rowinformation {
+  display: flex;
+  justify-content: space-between;
+  /* padding: 8px; */
+  border-bottom: 1px solid #ddd;
+
+  background-color: beige;
+  width: 100%;
+  height: 8%;
+}
+
+.boxmodal-rowinformation .header {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.boxmodal-rowinformation .column {
+  display: flex;
+  /* flex: 1; */
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  height: auto;
+}
+
+.boxmodal-rowinformation .profile-picture {
+  width: 8%;
+  height: auto;
+  background-color: aquamarine;
+
+  border: 1px solid black;
+}
+
+.boxmodal-rowinformation .sender-name {
+  width: 12%;
+  height: auto;
+  background-color: brown;
+
+  border: 1px solid black;
+}
+
+.boxmodal-rowinformation .title {
+  width: 60%;
+  height: auto;
+  background-color: rgb(156, 207, 89);
+
+  border: 1px solid black;
+}
+
+.boxmodal-rowinformation .read-status {
+  width: 10%;
+  height: auto;
+  background-color: rgb(107, 99, 221);
+
+  border: 1px solid black;
+}
+
+.boxmodal-rowinformation .sent-time {
+  width: 20%;
+  height: auto;
+  background-color: rgb(203, 45, 156);
+
+  border: 1px solid black;
+}

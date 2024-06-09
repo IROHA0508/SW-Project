@@ -1,0 +1,82 @@
+/* 모달 전체 스타일 */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    z-index: 1000; /* 다른 모달보다 위에 표시되도록 z-index 설정. 또 하나의 레이어 창 */
+}
+
+/* 모달 내용 스타일 */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 제목 스타일 */
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.preview-image {
+    width: 400px; /* 정사각형의 가로 크기 */
+    height: 400px; /* 정사각형의 세로 크기 */
+    display: flex; /* Flexbox 컨테이너로 설정 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    overflow: hidden; /* 내용이 넘치면 잘라냄 */
+    position: relative; /* 자식 요소의 위치 지정을 위해 부모 요소에 대한 상대적 위치 설정 */
+}
+
+.preview-image img {
+    max-width: 100%; /* 이미지가 부모 요소의 너비를 초과하지 않도록 설정 */
+    max-height: 100%; /* 이미지가 부모 요소의 높이를 초과하지 않도록 설정 */
+    width: auto; /* 이미지의 너비를 자동으로 조정 */
+    height: auto; /* 이미지의 높이를 자동으로 조정 */
+    object-fit: cover; /* 이미지가 요소에 맞게 조정될 수 있도록 설정 */
+    position: absolute; /* 이미지의 위치를 상대적으로 설정 */
+    top: 50%; /* 부모 요소 상단에서 중앙으로 */
+    left: 50%; /* 부모 요소 좌측에서 중앙으로 */
+    transform: translate(-50%, -50%); /* 이미지를 가운데로 이동 */
+}
+
+/* 내용 입력 스타일 */
+.modal-content input,
+.modal-content textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* 버튼 스타일 */
+.modal-content button {
+    padding: 10px 20px;
+    background-color: rgb(147, 112, 219);
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* 버튼 컨테이너 스타일 */
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* 우측 정렬 */
+    flex-wrap: nowrap;
+    width: 55%;
+}
+
+/* 버튼 간격 조절 */
+.modal-content button + button {
+    margin-left: 5px;
+}
+
+.modal-content button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,64 @@
+.DMComponent{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 10%;
+  border: 1px solid black;
+
+  background-color: lightcyan;
+}
+
+.DMComponent-profilecontainer{
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  width: 7.2%;
+  height: 100%;
+  border: 1px solid black;
+}
+
+.DMComponent-profile-image {
+  width: auto;          /* 이미지의 너비를 자동으로 설정 */
+  height: 90%;         /* 이미지의 높이를 부모 요소의 높이에 맞게 설정 */
+  max-height: 90%;     /* 이미지의 최대 높이를 부모 요소의 높이에 맞게 설정 */
+  object-fit: contain;  /* 이미지가 컨테이너에 맞도록 설정 */
+  border-radius: 50%;
+  margin-left : 15px;
+}
+
+.DMComponent-sendername{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  width: 10%;
+  height: 100%;
+  border: 1px solid black;
+
+  padding-left: 10px;
+}
+
+
+.DMComponent-dmtitle{
+  display: flex;
+  flex-direction: column;
+  width: 53.3%;
+  height: 100%;
+  border: 1px solid black;
+
+  padding-left: 10px;
+}
+
+.DMComponent-dmstatus{
+  width: 8.2%;
+  border: 1px solid black; 
+  
+  padding-left: 10px;
+}
+
+.DMComponent-senttime{
+  width: 15%;
+  border: 1px solid black;  
+
+  padding-left: 20px;
+}
