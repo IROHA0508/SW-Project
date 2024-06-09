@@ -34,7 +34,7 @@ def saveDM():
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         cursor.execute(
             'INSERT INTO messages (sender_id, receiver_id, title, message, timestamp, status) VALUES (?, ?, ?, ?, ?)',
-            (sender_id, receiver_id, title, message, timestamp, 'unread')
+            (sender_id, receiver_id, title, message, timestamp, '안 읽음')
         )
         conn.commit()
         conn.close()
