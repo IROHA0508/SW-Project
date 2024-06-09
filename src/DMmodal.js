@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import Modal from 'react-modal';
 
-import '../css/DMmodal.css';
-import close_button from '../image/close_button.png';
-import message_send_button from '../image/message_send_button.png';
+import './DMmodal.css';
+import close_button from './close_button.png';
+import message_send_button from './message_send_button.png';
 
 
 function DMModal({ isOpen, closeModal, current_username, receiver_username }) {

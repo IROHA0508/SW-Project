@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 
-import '../css/DMboxmodal.css';
-import close_button from '../image/close_button.png';
+import './DMboxmodal.css';
+import close_button from './close_button.png';
 import DMComponent from './DMComponent';
 
 function DMboxModal({ isOpen, closeModal, current_username }) {

@@ -3,11 +3,11 @@ import Slider from 'react-slick'; // 사진 슬라이더
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
-import '../css/UserPhotoComponent.css';
+import './UserPhotoComponent.css';
 
-import DM_button from '../image/DM_button.png';
-import DMModal from '../image/DMmodal';
-import PhotoEdit from '../image/photoEdit';
+import DM_button from './DM_button.png';
+import DMModal from './DMmodal';
+import PhotoEdit from './photoEdit';
 
 import option_button from './option_button.png';
 {/* <UserPhotoComponent 
