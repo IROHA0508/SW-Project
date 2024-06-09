@@ -153,7 +153,7 @@ const fetchUploadPhotos = async () => {
   return (
     <div>
       <div className='main-header-container'>
-        <p className='kaushan-script header-text'>
+        <p className='main-header-text'>
           Share Your Experience, Photo and Patience
         </p>
 

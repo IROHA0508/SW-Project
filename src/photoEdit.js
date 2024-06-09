@@ -74,10 +74,10 @@ function PhotoEdit({ photoId, closeModal }) {
     };
 
     return (
-        <div className='modal'>
-            <div className='modal-content'>
+        <div className='photoedit-modal'>
+            <div className='photoedit-modal-content'>
                 <h2>Edit Photo</h2>
-                <div className='preview-image'>
+                <div className='photoedit-preview-image'>
                     <img src={`data:image/jpeg;base64,${photo}`} alt='' />
                 </div>
                 <textarea
@@ -91,7 +91,7 @@ function PhotoEdit({ photoId, closeModal }) {
                 value={keywords}
                 onChange={handleKeywordsChange}
                 />
-                <div className="button-container">
+                <div className="photoedit-button-container">
                 <button onClick={handleSubmit}>Save</button>
                 <button onClick={closeModal}>Cancel</button>
                 </div>
