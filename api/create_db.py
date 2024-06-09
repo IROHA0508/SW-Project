@@ -37,6 +37,7 @@ def init_db():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             post_id INTEGER NOT NULL,
             photo_data TEXT NOT NULL,
+            photoname TEXT NOT NULL,
             FOREIGN KEY(post_id) REFERENCES post(id)
         ) 
     ''')
