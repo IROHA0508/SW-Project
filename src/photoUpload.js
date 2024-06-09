@@ -8,7 +8,7 @@ function UploadModal({ closeModal }){
 
     const handlePhotoUpload = (e) => {
         const uploadedPhotos = e.target.files;
-        setPhotos([...photos, ...uploadedPhotos]);
+        setPhotos([uploadedPhotos]);
     }
 
     const handleSubmit = async() => {

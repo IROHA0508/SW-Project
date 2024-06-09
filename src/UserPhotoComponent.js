@@ -112,7 +112,7 @@ function UserPhotoComponent({ postId, current_user, profileImage, posted_usernam
           {/* <img src={photo_example1} className='photo' alt='photo' /> */}
           <Slider {...settings}>
             {photos.map((photo, index) => (
-              <div key={index}>
+              <div key={photo}>
                 <img src={photo} className='photo' alt={`photo${index}`} />
               </div>
             ))}
