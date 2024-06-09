@@ -3,7 +3,7 @@ import React from 'react';
 import './DMComponent.css';
 import profile from './profile_default.jpg';
 
-function DMComponent({senderName, receivedDM, DMsenttime, DMstatus}) {
+function DMComponent({senderName, title, receivedDM, DMsenttime, DMstatus}) {
   return (
     <div className='DMComponent'>
       <div className='DMComponent-profilecontainer'>
@@ -15,7 +15,7 @@ function DMComponent({senderName, receivedDM, DMsenttime, DMstatus}) {
       </div>
 
       <div className='DMComponent-dmtitle'>
-        <p>{receivedDM}</p>
+        <p>{title}, {receivedDM}</p>
       </div>
       
       <div className='DMComponent-dmstatus'>

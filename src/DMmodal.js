@@ -11,6 +11,7 @@ function DMModal({ isOpen, closeModal, current_username, receiver_username }) {
   const [title, setTitle] = useState('');
 
   const sendMessage = async () => {
+    console.log('Sending message with title:', title);  // 디버깅용 로그 추가
     try {
       const response = await fetch('/api/saveDM', {
         method: 'POST',
@@ -26,12 +27,15 @@ function DMModal({ isOpen, closeModal, current_username, receiver_username }) {
       });
 
       const data = await response.json();
+      console.log('Response from sending message:', data);  // 디버깅용 로그 추가
       if (response.ok) {
+        console.log('Message sent successfully:', data);  // 디버깅용 로그 추가
         alert('메세지가 성공적으로 저장되었습니다.');
         setMessage('');
         setTitle('');
         closeModal();
       } else {
+        console.log('Error sending message:', data.error);  // 디버깅용 로그 추가
         alert(data.error || '메세지 전송 중 오류가 발생했습니다.');
       }
     } catch (error) {

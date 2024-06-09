@@ -18,6 +18,7 @@ def saveDM():
         sender_username = data.get('sender')
         receiver_username = data.get('receiver')
         message = data.get('message')
+        title = data.get('title')
 
         if not sender_username or not receiver_username or not message:
             return jsonify({'error': '필수 데이터가 누락되었습니다.'}), 400
@@ -30,9 +31,11 @@ def saveDM():
 
         conn = get_db_connection()
         cursor = conn.cursor()
+
+        timestamp = datetime.now().replace(microsecond=0).strftime('%Y-%m-%d %H:%M:%S')
         cursor.execute(
-            'INSERT INTO messages (sender_id, receiver_id, message, timestamp, status) VALUES (?, ?, ?, ?, ?)',
-            (sender_id, receiver_id, message, datetime.now(), 'unread')
+            'INSERT INTO messages (sender_id, receiver_id, title, message, timestamp, status) VALUES (?, ?, ?, ?, ?, ?)',
+            (sender_id, receiver_id, title, message, timestamp, '안 읽음')
         )
         conn.commit()
         conn.close()
@@ -68,9 +71,10 @@ def getreceivedDM():
             'message_id': row[0],
             'sender_id': row[1],
             'receiver_id': row[2],
-            'message': row[3],
-            'timestamp': row[4],
-            'status': row[5],
+            'title': row[3],
+            'message': row[4],
+            'timestamp': row[5],
+            'status': row[6],
             'sender_name': sender_name
         }
         Received_DM_info.append(message)

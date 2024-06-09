@@ -68,6 +68,7 @@ function DMboxModal({ isOpen, closeModal, current_username }) {
           <DMComponent
             key={dm.id}
             senderName={dm.sender_name}
+            title = {dm.title}
             receivedDM={dm.message}
             DMsenttime={dm.timestamp}
             DMstatus={dm.status}
