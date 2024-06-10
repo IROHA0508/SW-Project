@@ -15,7 +15,6 @@ function ReplyDMModal({ isOpen, onClose, onSendReply, currentUsername, receiverU
       setTitle(`RE: ${originalmessage_title}`);
       setMessage(`
 
-
   -----Original Message-----
   From: ${receiverUsername}
   To: ${currentUsername}
