@@ -58,20 +58,20 @@ function Login() {
       <Common_header />
 
       <div id="Picture">
-        <img src={mainPic1} className="main-pic main-pic1" alt="Main Pic 1"/>
-        <img src={mainPic2} className="main-pic main-pic2" alt="Main Pic 2"/>
-        <img src={mainPic3} className="main-pic main-pic3" alt="Main Pic 3"/>
+        <img src={mainPic1} className='main-pic main-pic1' alt="Main Pic 1"/>
+        <img src={mainPic2} className='main-pic main-pic2' alt="Main Pic 2"/>
+        <img src={mainPic3} className='main-pic main-pic3' alt="Main Pic 3"/>
       </div>
 
       <form id="loginForm" onSubmit={handleSubmit}>
-        <div className="login-form-container">
-          <div className="email-group">
+        <div className='login-form-container'>
+          <div className='email-group'>
             <p>Email Address</p>
-            <div className="input-container">
+            <div className='input-container'>
               <input 
                 id="email_input" 
                 type="email" 
-                placeholder="SWEngeneering@dgu.ac.kr"
+                placeholder=" SWEngeneering@dgu.ac.kr"
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -79,9 +79,9 @@ function Login() {
             </div>
           </div>
 
-          <div className="password-group">
+          <div className='password-group'>
             <p>Password</p>
-            <div className="input-container">
+            <div className='input-container'>
               <input 
                 id="password_input" 
                 type="password"
@@ -91,11 +91,11 @@ function Login() {
             </div>
           </div>
 
-          <div className="button-group-container">
-            <div className="login-button-group">
-              <button type="submit" className="login-button">로그인</button>
+          <div className='login-button-group-container'>
+            <div className='login-button-group'>
+              <button type="submit" className='login-button'>로그인</button>
               <p>또는</p>
-              <button type="submit" className="guest-login-button">게스트 로그인</button>
+              <button type="submit" className='guest-login-button'>게스트 로그인</button>
             </div>
           </div>
         </div>
