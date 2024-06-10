@@ -36,7 +36,7 @@ def init_db():
         CREATE TABLE IF NOT EXISTS photos (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             post_id INTEGER NOT NULL,
-            photo_data TEXT NOT NULL,
+            photo_data BLOB NOT NULL,
             photoname TEXT NOT NULL,
             FOREIGN KEY(post_id) REFERENCES post(id)
         ) 

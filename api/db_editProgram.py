@@ -5,7 +5,7 @@ import sqlite3
 def drop_table():
     conn = get_db_connection()
     
-    tables = ['users', 'photos', 'keywords', 'messages']
+    tables = ['post', 'photos', 'keywords', 'messages']
     for table in tables:
         conn.execute(f'DROP TABLE IF EXISTS {table}')
         print(f'{table}테이플 삭제 완료')
