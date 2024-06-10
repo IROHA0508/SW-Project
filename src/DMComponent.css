@@ -84,3 +84,29 @@
 
   border: 1px solid black;
 }
+
+.DMComponent-expanded-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.DMComponent-expanded-buttoncontainer {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.DMComponent-expanded-buttoncontainer button {
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+}
+
+.DMComponent-expanded-buttoncontainer button:hover {
+  background-color: #0056b3;
+}

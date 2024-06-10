@@ -42,6 +42,11 @@ function DMboxModal({ isOpen, closeModal, current_username }) {
     );
   };
 
+  const removeMessage = (messageId) => {
+    setReceivedDMs((prevDMs) => prevDMs.filter(dm => dm.message_id !== messageId));
+  };
+
+
   return (
     <Modal
       isOpen={isOpen}
@@ -81,6 +86,7 @@ function DMboxModal({ isOpen, closeModal, current_username }) {
             DMstatus={dm.status}
             messageId={dm.message_id}
             updateMessageStatus={updateMessageStatus} // 상태 업데이트 함수 전달
+            removeMessage={removeMessage} 
           />
         ))}
       </div>

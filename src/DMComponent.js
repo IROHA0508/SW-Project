@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './DMComponent.css';
 import profile from './profile_default.jpg';
 
-function DMComponent({ senderName, title, receivedDM, DMsenttime, DMstatus, messageId, updateMessageStatus }) {
+function DMComponent({ senderName, title, receivedDM, DMsenttime, DMstatus, messageId, updateMessageStatus, removeMessage}) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [status, setStatus] = useState(DMstatus);
 
@@ -44,6 +44,33 @@ function DMComponent({ senderName, title, receivedDM, DMsenttime, DMstatus, mess
     }
   };
 
+  const handleReply = () => {
+    console.log('Reply button clicked for messageId:', messageId);
+    // Add your reply logic here
+  };
+
+  const handleDelete = async (e) => {
+    e.stopPropagation();
+    console.log('Delete button clicked for messageId:', messageId);
+    try {
+      const response = await fetch(`/api/deleteDM/${messageId}`, {
+        method: 'DELETE',
+      });
+      
+      if (response.ok) {
+        removeMessage(messageId);  // 부모 컴포넌트 또는 상태에서 메시지 삭제
+        console.log('Message deleted:', messageId);
+      } else {
+        console.error('Failed to delete message:', messageId);
+        throw new Error('Failed to delete message');
+      }
+    } catch (error) {
+      console.error('Error deleting message:', error);
+    }
+  };
+
+
+
   return (
     <div className={`DMComponent ${isExpanded ? 'expanded' : ''}`} onClick={handleToggle}>
       <div className='DMComponent-header'>
@@ -73,6 +100,15 @@ function DMComponent({ senderName, title, receivedDM, DMsenttime, DMstatus, mess
           <p>{receivedDM}</p>
         </div>
       )}
+
+      {isExpanded && (
+        <div className='DMComponent-expanded-buttoncontainer'>
+          <button onClick={handleReply}>답장</button>
+          <button onClick={handleDelete}>삭제</button>
+        </div>
+      )}
+
+
     </div>
   );
 }
