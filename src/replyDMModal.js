@@ -1,17 +1,17 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
-
-import './DMmodal.css';
+import './replyDMModal.css';
 import close_button from './close_button.png';
 import message_send_button from './message_send_button.png';
 
+Modal.setAppElement('#root');
 
-function DMModal({ isOpen, closeModal, current_username, receiver_username }) {
+function ReplyDMModal({ isOpen, onClose, onSendReply, currentUsername, receiverUsername }) {
   const [message, setMessage] = useState('');
   const [title, setTitle] = useState('');
 
   const sendMessage = async () => {
-    console.log('Sending message with title:', title);  // 디버깅용 로그 추가
+    console.log('Sending message with title:', title);
     try {
       const response = await fetch('/api/saveDM', {
         method: 'POST',
@@ -19,23 +19,23 @@ function DMModal({ isOpen, closeModal, current_username, receiver_username }) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          sender: current_username,
-          receiver: receiver_username,
+          sender: currentUsername,
+          receiver: receiverUsername,
           message: message,
           title: title,
         }),
       });
 
       const data = await response.json();
-      console.log('Response from sending message:', data);  // 디버깅용 로그 추가
+      console.log('Response from sending message:', data);
       if (response.ok) {
-        console.log('Message sent successfully:', data);  // 디버깅용 로그 추가
+        console.log('Message sent successfully:', data);
         alert('메세지가 성공적으로 저장되었습니다.');
         setMessage('');
         setTitle('');
-        closeModal();
+        onClose();
       } else {
-        console.log('Error sending message:', data.error);  // 디버깅용 로그 추가
+        console.log('Error sending message:', data.error);
         alert(data.error || '메세지 전송 중 오류가 발생했습니다.');
       }
     } catch (error) {
@@ -47,50 +47,48 @@ function DMModal({ isOpen, closeModal, current_username, receiver_username }) {
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={closeModal}
+      onRequestClose={onClose}
       contentLabel="DM Modal"
-      className="custom-modal-content"
+      className="custom-reply-modal-content"
     >
-
-      <div className='modal-header'>
-        <div className = 'big-infocontainer'>
-          <div className = 'info-container'>
-            <p>보내는 사람 : {current_username}</p>
+      <div className='reply-modal-header'>
+        <div className='reply-big-infocontainer'>
+          <div className='reply-info-container'>
+            <p>보내는 사람: {currentUsername}</p>
           </div>
-          <div className='info-container'>
-            <p> 받는 사람  : {receiver_username}</p>
+          <div className='reply-info-container'>
+            <p>받는 사람: {receiverUsername}</p>
           </div>
         </div>
-        
-        <div className = 'close-button-container'>
-          <img src={close_button} className='close-button' alt='close' onClick={closeModal}/>
-        </div>  
+        <div className='reply-close-button-container'>
+          <img src={close_button} className='close-button' alt='close' onClick={onClose} />
+        </div>
       </div>
 
-      <div className='modal-message-titleinput'>
+      <div className='reply-modal-message-titleinput'>
         <input
           id="title_input"
           type="text"
           placeholder="제목을 입력하세요"
-          value = {title}
+          value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
 
-      <div className='modal-message-input'>
+      <div className='reply-modal-message-input'>
         <input
           id="message_input"
           type="text"
           placeholder="메세지를 입력하세요"
-          value = {message}
+          value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
       </div>
 
-      <div className='sendbutton-container'>
-        <img 
-          src={message_send_button} 
-          className='message-send-button' 
+      <div className='reply-sendbutton-container'>
+        <img
+          src={message_send_button}
+          className='message-send-button'
           alt='send'
           onClick={sendMessage}
         />
@@ -99,4 +97,4 @@ function DMModal({ isOpen, closeModal, current_username, receiver_username }) {
   );
 }
 
-export default DMModal;
+export default ReplyDMModal;

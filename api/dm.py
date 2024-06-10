@@ -160,29 +160,29 @@ def deleteSelectedDM(messageId):
         return jsonify({'error': 'Internal Server Error', 'details': str(e), 'traceback': traceback_str}), 500
         # return jsonify({'error': 'Internal Server Error', 'details': str(e)}), 500
 
-# @dm.route('/api/replyDM', methods = ['GET'])
-# def replySelectedDM():
-#     if 'email' not in session:
-#         return jsonify({'error': '인증되지 않은 사용자'}), 401
+@dm.route('/api/replyDM', methods = ['GET'])
+def replySelectedDM():
+    if 'email' not in session:
+        return jsonify({'error': '인증되지 않은 사용자'}), 401
     
-#     try:
-#         message_id = request.args.get('messageId')
-#         if not message_id:
-#             return jsonify({'error': '메세지가 존재하지 않습니다'}), 400
+    try:
+        message_id = request.args.get('messageId')
+        if not message_id:
+            return jsonify({'error': '메세지가 존재하지 않습니다'}), 400
 
-#         conn = get_db_connection()
-#         cursor = conn.cursor()
-#         cursor.execute('SELECT status FROM messages WHERE message_id = ?', (message_id,))
-#         result = cursor.fetchone()
-#         conn.close()
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT status FROM messages WHERE message_id = ?', (message_id,))
+        result = cursor.fetchone()
+        conn.close()
 
-#         if result:
-#             return jsonify({'status': result[0]}), 200
-#         else:
-#             return jsonify({'error': '메세지를 찾을 수 없습니다.'}), 404
+        if result:
+            return jsonify({'status': result[0]}), 200
+        else:
+            return jsonify({'error': '메세지를 찾을 수 없습니다.'}), 404
         
-#     except Exception as e:
-#         return jsonify({'error': 'Internal Server Error', 'details': str(e)}), 500
+    except Exception as e:
+        return jsonify({'error': 'Internal Server Error', 'details': str(e)}), 500
 
 def get_userid_by_username(username):
     conn = get_db_connection()

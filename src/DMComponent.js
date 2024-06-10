@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './DMComponent.css';
 import profile from './profile_default.jpg';
+import ReplyDMModal from './replyDMModal';
 
-function DMComponent({ senderName, title, receivedDM, DMsenttime, DMstatus, messageId, updateMessageStatus, removeMessage}) {
+function DMComponent({ senderName, receiverName, title, receivedDM, DMsenttime, DMstatus, messageId, updateMessageStatus, removeMessage }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [status, setStatus] = useState(DMstatus);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     setStatus(DMstatus);
@@ -19,7 +21,7 @@ function DMComponent({ senderName, title, receivedDM, DMsenttime, DMstatus, mess
   };
 
   const updateStatusToRead = async (messageId) => {
-    console.log('Updating status for messageId:', messageId);  // 로그 추가
+    console.log('Updating status for messageId:', messageId);
     try {
       const response = await fetch('/api/updateDMStatus', {
         method: 'POST',
@@ -28,12 +30,12 @@ function DMComponent({ senderName, title, receivedDM, DMsenttime, DMstatus, mess
         },
         body: JSON.stringify({ messageId }),
       });
-      
+
       const data = await response.json();
-      
+
       if (response.ok) {
-        setStatus('읽음');  // 상태 업데이트
-        updateMessageStatus(messageId, '읽음'); // 부모 컴포넌트의 상태도 업데이트
+        setStatus('읽음');
+        updateMessageStatus(messageId, '읽음');
         console.log('Updated status:', '읽음');
       } else {
         console.error('Failed to update status:', data);
@@ -45,8 +47,32 @@ function DMComponent({ senderName, title, receivedDM, DMsenttime, DMstatus, mess
   };
 
   const handleReply = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleSendReply = async (replyText) => {
     console.log('Reply button clicked for messageId:', messageId);
-    // Add your reply logic here
+    try {
+      const response = await fetch('/api/replyDM', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ messageId, replyText }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Reply sent successfully:', data);
+      } else {
+        console.error('Failed to send reply:', data);
+      }
+    } catch (error) {
+      console.error('Error replying to message:', error);
+    } finally {
+      setIsModalOpen(false);
+    }
   };
 
   const handleDelete = async (e) => {
@@ -56,9 +82,9 @@ function DMComponent({ senderName, title, receivedDM, DMsenttime, DMstatus, mess
       const response = await fetch(`/api/deleteDM/${messageId}`, {
         method: 'DELETE',
       });
-      
+
       if (response.ok) {
-        removeMessage(messageId);  // 부모 컴포넌트 또는 상태에서 메시지 삭제
+        removeMessage(messageId);
         console.log('Message deleted:', messageId);
       } else {
         console.error('Failed to delete message:', messageId);
@@ -68,8 +94,6 @@ function DMComponent({ senderName, title, receivedDM, DMsenttime, DMstatus, mess
       console.error('Error deleting message:', error);
     }
   };
-
-
 
   return (
     <div className={`DMComponent ${isExpanded ? 'expanded' : ''}`} onClick={handleToggle}>
@@ -85,16 +109,16 @@ function DMComponent({ senderName, title, receivedDM, DMsenttime, DMstatus, mess
         <div className='DMComponent-dmtitle'>
           <p>{title}</p>
         </div>
-        
+
         <div className='DMComponent-dmstatus'>
           <p>{status}</p>
         </div>
-        
+
         <div className='DMComponent-senttime'>
           <p>{DMsenttime}</p>
         </div>
       </div>
-      
+
       {isExpanded && (
         <div className='DMComponent-dmmessage'>
           <p>{receivedDM}</p>
@@ -108,7 +132,13 @@ function DMComponent({ senderName, title, receivedDM, DMsenttime, DMstatus, mess
         </div>
       )}
 
-
+      <ReplyDMModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSendReply={handleSendReply}
+        currentUsername={receiverName}
+        receiverUsername={senderName}
+      />
     </div>
   );
 }

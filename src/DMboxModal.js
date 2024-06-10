@@ -80,6 +80,7 @@ function DMboxModal({ isOpen, closeModal, current_username }) {
           <DMComponent
             key={dm.message_id}
             senderName={dm.sender_name}
+            receiverName = {current_username} // 현재 접속한 사람이 받는 사람
             title={dm.title}
             receivedDM={dm.message}
             DMsenttime={dm.timestamp}

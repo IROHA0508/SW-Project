@@ -102,11 +102,11 @@
   margin: 5px;
   cursor: pointer;
   border: none;
-  background-color: #007bff;
+  background-color: #6667AB; 
   color: white;
   border-radius: 5px;
 }
 
 .DMComponent-expanded-buttoncontainer button:hover {
-  background-color: #0056b3;
+  background-color: #4b4c8c; 
 }
