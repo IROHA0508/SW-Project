@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
-
 import './DMboxmodal.css';
 import close_button from './close_button.png';
-// import close_button from './close_button.jpg';
 import DMComponent from './DMComponent';
 
 function DMboxModal({ isOpen, closeModal, current_username }) {
   const [receivedDMs, setReceivedDMs] = useState([]);
 
   useEffect(() => {
-    fetchReceivedDM();
-  }, []);
+    if (isOpen) {
+      fetchReceivedDM();
+    }
+  }, [isOpen]);
 
   const fetchReceivedDM = async () => {
     try {
@@ -34,6 +34,14 @@ function DMboxModal({ isOpen, closeModal, current_username }) {
     }
   };
 
+  const updateMessageStatus = (messageId, newStatus) => {
+    setReceivedDMs((prevDMs) =>
+      prevDMs.map((dm) =>
+        dm.message_id === messageId ? { ...dm, status: newStatus } : dm
+      )
+    );
+  };
+
   return (
     <Modal
       isOpen={isOpen}
@@ -41,7 +49,6 @@ function DMboxModal({ isOpen, closeModal, current_username }) {
       contentLabel="DMbox Modal"
       className="custom-modal-dmbox-content"
     >
-
       <div className='boxmodal-header'>
         <div className='boxbig-infocontainer'>
           <div className='boxinfo-container'>
@@ -55,7 +62,6 @@ function DMboxModal({ isOpen, closeModal, current_username }) {
       </div>
 
       <div className='box-receivedDM'>
-
         <div className='boxmodal-rowinformation header'>
           <div className='column profile-picture'>프로필</div>
           <div className='column sender-name'>보낸 사람</div>
@@ -64,14 +70,17 @@ function DMboxModal({ isOpen, closeModal, current_username }) {
           <div className='column sent-time'>보낸 시간</div>
         </div>
 
+        {/* 수신한 DM map으로 가져오기 */}
         {receivedDMs.map(dm => (
           <DMComponent
-            key={dm.id}
+            key={dm.message_id}
             senderName={dm.sender_name}
-            title = {dm.title}
+            title={dm.title}
             receivedDM={dm.message}
             DMsenttime={dm.timestamp}
             DMstatus={dm.status}
+            messageId={dm.message_id}
+            updateMessageStatus={updateMessageStatus} // 상태 업데이트 함수 전달
           />
         ))}
       </div>
