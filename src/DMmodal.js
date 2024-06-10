@@ -78,13 +78,20 @@ function DMModal({ isOpen, closeModal, current_username, receiver_username }) {
       </div>
 
       <div className='modal-message-input'>
-        <input
+        <textarea
+          id="message_input"
+          placeholder="메세지를 입력하세요"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+
+        {/* <input
           id="message_input"
           type="text"
           placeholder="메세지를 입력하세요"
           value = {message}
           onChange={(e) => setMessage(e.target.value)}
-        />
+        /> */}
       </div>
 
       <div className='sendbutton-container'>

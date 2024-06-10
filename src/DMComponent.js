@@ -138,6 +138,9 @@ function DMComponent({ senderName, receiverName, title, receivedDM, DMsenttime, 
         onSendReply={handleSendReply}
         currentUsername={receiverName}
         receiverUsername={senderName}
+        originalmessage_title = {title}
+        originalmessage = {receivedDM}
+        originalmessage_senttime = {DMsenttime}
       />
     </div>
   );

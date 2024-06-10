@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import './replyDMModal.css';
 import close_button from './close_button.png';
@@ -6,9 +6,25 @@ import message_send_button from './message_send_button.png';
 
 Modal.setAppElement('#root');
 
-function ReplyDMModal({ isOpen, onClose, onSendReply, currentUsername, receiverUsername }) {
+function ReplyDMModal({ isOpen, onClose, onSendReply, currentUsername, receiverUsername, originalmessage_title, originalmessage, originalmessage_senttime}) {
   const [message, setMessage] = useState('');
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState(`RE: ${originalmessage_title}`);
+
+  useEffect(() => {
+    if (isOpen) {
+      setTitle(`RE: ${originalmessage_title}`);
+      setMessage(`
+
+
+  -----Original Message-----
+  From: ${receiverUsername}
+  To: ${currentUsername}
+  Sent: ${originalmessage_senttime}
+  Title: ${originalmessage_title}
+  Message: ${originalmessage}`);
+    }
+  }, [isOpen, originalmessage_title, receiverUsername, currentUsername, originalmessage_senttime, originalmessage]);
+
 
   const sendMessage = async () => {
     console.log('Sending message with title:', title);
@@ -76,12 +92,13 @@ function ReplyDMModal({ isOpen, onClose, onSendReply, currentUsername, receiverU
       </div>
 
       <div className='reply-modal-message-input'>
-        <input
-          id="message_input"
-          type="text"
-          placeholder="메세지를 입력하세요"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+        <textarea
+        id="message_input"
+        placeholder="
+        
+        메세지를 입력하세요"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
         />
       </div>
 
