@@ -120,16 +120,15 @@ function DMComponent({ senderName, receiverName, title, receivedDM, DMsenttime, 
       </div>
 
       {isExpanded && (
-        <div className='DMComponent-dmmessage'>
-          <p>{receivedDM}</p>
-        </div>
-      )}
-
-      {isExpanded && (
-        <div className='DMComponent-expanded-buttoncontainer'>
-          <button onClick={handleReply}>답장</button>
-          <button onClick={handleDelete}>삭제</button>
-        </div>
+        <>
+          <div className='DMComponent-dmmessage'>
+            <p>{receivedDM}</p>
+          </div>
+          <div className='DMComponent-expanded-buttoncontainer'>
+            <button onClick={handleReply}>답장</button>
+            <button onClick={handleDelete}>삭제</button>
+          </div>
+        </>
       )}
 
       <ReplyDMModal
@@ -138,9 +137,9 @@ function DMComponent({ senderName, receiverName, title, receivedDM, DMsenttime, 
         onSendReply={handleSendReply}
         currentUsername={receiverName}
         receiverUsername={senderName}
-        originalmessage_title = {title}
-        originalmessage = {receivedDM}
-        originalmessage_senttime = {DMsenttime}
+        originalmessage_title={title}
+        originalmessage={receivedDM}
+        originalmessage_senttime={DMsenttime}
       />
     </div>
   );

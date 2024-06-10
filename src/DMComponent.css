@@ -16,7 +16,7 @@
 }
 
 .DMComponent.expanded {
-  max-height: 300px; /* 확장된 높이 설정 */
+  max-height: 600px; /* 확장된 높이 설정 */
 }
 
 .DMComponent-header {
@@ -85,6 +85,11 @@
   border: 1px solid black;
 }
 
+.DMComponent-dmmessage p {
+  white-space: pre-wrap;
+}
+
+
 .DMComponent-expanded-content {
   display: flex;
   flex-direction: column;
@@ -93,18 +98,20 @@
 
 .DMComponent-expanded-buttoncontainer {
   display: flex;
-  justify-content: flex-start;
-  margin-top: 10px;
+  justify-content: flex-end;
+  padding: 10px;
+  gap: 10px; /* Add some space between the buttons */
+  background-color: #f9f9f9; /* Optional: background color to differentiate the button container */
 }
 
 .DMComponent-expanded-buttoncontainer button {
-  padding: 10px;
-  margin: 5px;
-  cursor: pointer;
+  padding: 10px 20px;
   border: none;
-  background-color: #6667AB; 
-  color: white;
   border-radius: 5px;
+  background-color: #6667AB;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
 }
 
 .DMComponent-expanded-buttoncontainer button:hover {
