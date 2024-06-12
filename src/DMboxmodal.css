@@ -1,3 +1,5 @@
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
+
 /* 모달 스타일 설정 */
 .custom-modal-dmbox-content {
   position: fixed;
@@ -7,9 +9,12 @@
   width: 60%;
   height: 60%;
   margin: auto;
-  background-color: rgb(204, 113, 204);
+  background-color: rgb(255, 255, 255);
   overflow-y: auto;
   overflow-x: hidden;
+
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .boxmodal-header {
@@ -23,10 +28,7 @@
   width: 100%;
   height: 10%;
   align-items: center;
-  background-color: lightblue;
-
-  /* 디버깅용으로 경계선 */
-  border: 1px solid black;
+  /* background-color: lightblue; */
 }
 
 .boxbig-infocontainer{
@@ -37,7 +39,7 @@
   align-items: stretch;
   width: 100%; /* Takes up 80% of modal-header */
   height: 100%;
-  border: 1px solid black; /* For debugging purposes */
+  /* border: 1px solid #ccc; */
 }
 
 .boxinfo-container{
@@ -48,7 +50,12 @@
   height: 100%;
   /* padding: 0 10px; */
   /* 디버깅용으로 경계선 */
-  border: 1px solid black;
+  border: 1px solid #ccc;
+
+  font-family: 'NanumSquare', sans-serif ;
+  font-size: 1em;
+  font-weight: bold;
+  color: #000000; 
 }
 
 .boxinfo-container p {
@@ -61,41 +68,32 @@
   text-align: center;
 
   margin: 0px;
+
+  font-family: 'NanumSquare', sans-serif ;
+  /* font-size: 1em; */
+  font-weight: bold;
+  color: #000000; 
 }
 
 .boxinfo-container p span {
   /* veri peri */
   color: rgb(102, 103, 171);
+
+  font-family: 'NanumSquare', sans-serif ;
+  /* font-size: 1.3em; */
+  font-weight: bold;
 }
 
-.boxclose-button-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 7%; /* Takes up 20% of modal-header */
-  height: 90%;
-  border: 1px solid black; /* For debugging purposes */
-}
-
-.boxclose-button{
-  width: auto;          /* 이미지의 너비를 자동으로 설정 */
-  height: 80%;         /* 이미지의 높이를 부모 요소의 높이에 맞게 설정 */
-  max-height: 80%;     /* 이미지의 최대 높이를 부모 요소의 높이에 맞게 설정 */
-  object-fit: contain;  /* 이미지가 컨테이너에 맞도록 설정 */
-  /* margin-right: 0.5vw; */
-  /* border-radius: 50%;/ */
-  cursor: pointer;
-}
 
 .box-receivedDM{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  width: 100%;
+  width: 90%;
   height: 88%;
-  border: 1px solid black;
-  background-color: rgb(163, 70, 70);
+  /* border: 1px solid black; */
+  /* background-color: rgb(163, 70, 70); */
 }
 
 .box-receivedDM {
@@ -105,65 +103,101 @@
 
 .boxmodal-rowinformation {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   /* padding: 8px; */
   border-bottom: 1px solid #ddd;
-
-  background-color: beige;
+  
+  /* background-color: beige; */
   width: 100%;
   height: 8%;
+  
+  font-family: 'NanumSquare', sans-serif ;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #000000; 
+  border: 1px solid black;
 }
 
 .boxmodal-rowinformation .header {
-  background-color: #f2f2f2;
   font-weight: bold;
-}
-
+  }
+  
 .boxmodal-rowinformation .column {
   display: flex;
-  /* flex: 1; */
   align-items: center;
   justify-content: center;
   border: 1px solid black;
   height: auto;
-}
-
-.boxmodal-rowinformation .profile-picture {
-  width: 8%;
-  height: auto;
-  background-color: aquamarine;
-
-  border: 1px solid black;
+  
+  color: #ffffff; /* 글자 색상을 흰색으로 설정 */
+  font-family: 'NanumSquare', sans-serif; /* 원하는 폰트 패밀리를 설정 */
+  font-size: 1em; /* 원하는 글씨 크기를 설정 */
+  font-weight: bold; /* 글씨 두께를 설정 */
+  }
+  
+  .boxmodal-rowinformation .profile-picture {
+    width: 7.3%;
+    height: auto;
+    background-color: #a094c4;
+    
+    /* border: 1px solid black; */
 }
 
 .boxmodal-rowinformation .sender-name {
-  width: 12%;
+  width: 10%;
   height: auto;
-  background-color: brown;
-
-  border: 1px solid black;
-}
+  background-color: #a094c4;
+  
+  /* border: 1px solid black; */
+  }
 
 .boxmodal-rowinformation .title {
-  width: 60%;
+  width: 54%;
   height: auto;
-  background-color: rgb(156, 207, 89);
-
-  border: 1px solid black;
+  background-color: #a094c4;
+  
+  /* border: 1px solid black; */
 }
 
 .boxmodal-rowinformation .read-status {
-  width: 10%;
+  width: 8.2%;
   height: auto;
-  background-color: rgb(107, 99, 221);
-
+  background-color: #a094c4;
+  
   border: 1px solid black;
 }
 
 .boxmodal-rowinformation .sent-time {
-  width: 20%;
+  width: 21.5%;
   height: auto;
-  background-color: rgb(203, 45, 156);
-
+  background-color: #a094c4;
   border: 1px solid black;
+  }
+
+.boxclose-button-container{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%; /* Takes up 20% of modal-header */
+  height: 10%;
+  /* border: 1px solid black; */
+}
+
+.boxclose-button{
+  padding: 10px 20px;
+  background-color: #6667AB;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+
+  font-family: 'NanumSquare', sans-serif ;
+  font-size: 1em;
+  font-weight: bold;
+
+  margin-right: 20px;
+}
+
+.boxclose-button:hover {
+  background-color: #4b4b7c;
 }

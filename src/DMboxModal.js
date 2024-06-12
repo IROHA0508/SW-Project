@@ -61,9 +61,7 @@ function DMboxModal({ isOpen, closeModal, current_username }) {
           </div>
         </div>
         
-        <div className='boxclose-button-container'>
-          <img src={close_button} className='boxclose-button' alt='close' onClick={closeModal} />
-        </div>
+        
       </div>
 
       <div className='box-receivedDM'>
@@ -90,6 +88,11 @@ function DMboxModal({ isOpen, closeModal, current_username }) {
             removeMessage={removeMessage} 
           />
         ))}
+
+        <div className='boxclose-button-container'>
+          {/* <img src={close_button} className='boxclose-button' alt='close' onClick={closeModal} /> */}
+          <button className='boxclose-button' onClick={closeModal}>Close</button>
+        </div>
       </div>
     </Modal>
   );
