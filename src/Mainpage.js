@@ -159,9 +159,9 @@ const fetchUploadPhotos = async () => {
 
         <div className='main-button-container'>
           <p>{nickname} 님</p>
-          <button className='main-header-button' onClick={handleDMboxclick}>DM</button>
-          <button className='main-header-button' onClick={openModal}>UpLoad</button>
-          <button className='main-header-button' onClick={handleLogout}>Log Out</button>        
+          <button className='main-header-button' onClick={handleDMboxclick}> DM </button>
+          <button className='main-header-button' onClick={openModal}> Upload </button>
+          <button className='main-header-button' onClick={handleLogout}> Log Out </button>        
         </div>
 
       </div>
