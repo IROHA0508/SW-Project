@@ -159,10 +159,11 @@ const fetchUploadPhotos = async () => {
 
         <div className='main-button-container'>
           <p>{nickname} 님</p>
-          <button className="main-header-button" onClick={handleDMboxclick}>DM</button>
-          <button className="main-header-button" onClick={openModal}>UpLoad</button>
-          <button className="main-header-button" onClick={handleLogout}>Log Out</button>        
+          <button className='main-header-button' onClick={handleDMboxclick}>DM</button>
+          <button className='main-header-button' onClick={openModal}>UpLoad</button>
+          <button className='main-header-button' onClick={handleLogout}>Log Out</button>        
         </div>
+
       </div>
 
       <DMboxModal isOpen = {modalDMboxIsOpen} closeModal={closeDMboxModal} current_username={nickname}/>
@@ -173,8 +174,8 @@ const fetchUploadPhotos = async () => {
           
           <div className='searchbar-container' id='searchbar'>
             <img src={searchicon} className="search-icon" alt="search icon"/>
-            <input type="text" className="search-input" placeholder="여기는 검색하는 곳입니다" />
-            <button className="search-button">검색</button>
+            <input type="text" className='search-input' placeholder="검색어를 입력하세요" />
+            <button className='search-button'>검색</button>
           </div>
 
           <div className='main-user-content'>
