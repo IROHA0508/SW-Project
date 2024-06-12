@@ -2,9 +2,6 @@ import React, {useState} from 'react';
 import Modal from 'react-modal';
 
 import './DMmodal.css';
-import close_button from './close_button.png';
-import message_send_button from './message_send_button.png';
-
 
 function DMModal({ isOpen, closeModal, current_username, receiver_username }) {
   const [message, setMessage] = useState('');
@@ -62,9 +59,9 @@ function DMModal({ isOpen, closeModal, current_username, receiver_username }) {
           </div>
         </div>
         
-        <div className = 'close-button-container'>
+        {/* <div className = 'close-button-container'>
           <img src={close_button} className='close-button' alt='close' onClick={closeModal}/>
-        </div>  
+        </div>   */}
       </div>
 
       <div className='modal-message-titleinput'>
@@ -84,23 +81,17 @@ function DMModal({ isOpen, closeModal, current_username, receiver_username }) {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-
-        {/* <input
-          id="message_input"
-          type="text"
-          placeholder="메세지를 입력하세요"
-          value = {message}
-          onChange={(e) => setMessage(e.target.value)}
-        /> */}
       </div>
 
-      <div className='sendbutton-container'>
-        <img 
+      <div className='dmmodal-button-container'>
+        <button className='message-send-button' onClick={sendMessage}>Send</button>
+        <button className='close-dmmodal-button' onClick={closeModal}>Close</button>
+        {/* <img 
           src={message_send_button} 
           className='message-send-button' 
           alt='send'
           onClick={sendMessage}
-        />
+        /> */}
       </div>
     </Modal>
   );
