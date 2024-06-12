@@ -30,7 +30,7 @@ function DMModal({ isOpen, closeModal, current_username, receiver_username }) {
       console.log('Response from sending message:', data);  // 디버깅용 로그 추가
       if (response.ok) {
         console.log('Message sent successfully:', data);  // 디버깅용 로그 추가
-        alert('메세지가 성공적으로 저장되었습니다.');
+        alert('메세지가 전송되었습니다.');
         setMessage('');
         setTitle('');
         closeModal();

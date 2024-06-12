@@ -190,7 +190,7 @@
   margin-top: 20px; /* 적절한 간격 설정 */
 
   /* 디버깅을 위해 구역 확인용으로 색 설정했습니다 */
-  background-color: rgb(255, 255, 255);
+  /* background-color: rgb(255, 255, 255); */
 
   overflow-y: auto;
   overflow-x: hidden;

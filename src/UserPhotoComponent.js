@@ -78,29 +78,29 @@ function UserPhotoComponent({ photoId, current_user, profileImage, posted_userna
 
 
   return(
-    <div className='user-content'>
-      {/* 사진이 들어가는 곳 */}
-      <div className='userPhoto'>
-        {/* 상단에 유저 프로필, 이름, 게시글에 대한 옵션 */}
-        <div className='content-box'>
-          <img src={profileImage} className='profile' alt='profile' />
-          <p>{posted_username}</p>
+    <div className='photocomponent-user-content'>
+      <div className='photocomponent-userPhoto'>
+        <div className='photocomponent-content-box1'>
+          
+          <div className='photocomponent-center-content'>
+            <img src={profileImage} className='photocomponent-profile' alt='profile' />
+            <p>{posted_username}</p>
+            <img src={DM_button} className='photocomponent-DM-button' alt='DM' onClick={handleDMClick}/> 
+          </div>
 
-          <img src={DM_button} className='DM-button' alt='DM' onClick={handleDMClick}/> 
-          <DMModal isOpen={DMmodalIsOpen} closeModal={closeDMModal} current_username = {current_user} receiver_username={posted_username} />
+          <img src={option_button} className='photocomponent-option-button' alt='option' onClick={handleOptionToggle}/>
+          <DMModal isOpen={DMmodalIsOpen} closeModal={closeDMModal} current_username={current_user} receiver_username={posted_username} />
 
           {optionVisible && (
-            <div className="options-menu">
-              <button className='edit-button' onClick={handleEditClick}>수정</button>
-              <button className='delete-button' onClick={handleDeleteClick}>삭제</button>
+            <div className='photocomponent-options-menu'>
+              <button className='photocomponent-edit-button' onClick={handleEditClick}>수정</button>
+              <button className='photocomponent-delete-button' onClick={handleDeleteClick}>삭제</button>
             </div>
           )}
-
-          <img src={option_button} className='option-button' alt='option' onClick={handleOptionToggle}/>
         </div>
 
         {/* 사진이 표시되는 곳 */}
-        <div className='photo-container'>
+        <div className='photocomponent-photo-container'>
           {/* 일단 슬라이더 기능은 스킵 */}
           {/* <Slider {...settings}>
             {example_photos.map((example_photos, index) => (
@@ -110,17 +110,17 @@ function UserPhotoComponent({ photoId, current_user, profileImage, posted_userna
             ))}
           </Slider> */}
           {/* <img src={photo_example1} className='photo' alt='photo' /> */}
-          <img src={photos} className='photo' alt='photo' />
+          <img src={photos} className='photocomponent-photo' alt='photo' />
           {/* <img src={photo_example1} className='photo' alt='photo' /> */}
         </div>
 
         {/* 해시태그 달 곳 */}
-        <div className='content-box'>
+        <div className='photocomponent-content-box2'>
           <p>{hashtags.map((hashtag, index) => `#${hashtag} `)}</p>
         </div>
 
         {/* 사진에 대한 설명이 들어가는 곳 */}
-        <div className='content-box'>
+        <div className='photocomponent-content-box3'>
           <p>{description}</p>
         </div>
       </div>
