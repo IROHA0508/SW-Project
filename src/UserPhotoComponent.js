@@ -1,7 +1,8 @@
 import React, {useState} from "react";
-import Slider from 'react-slick'; // 사진 슬라이더
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+
 
 import './UserPhotoComponent.css';
 
@@ -10,6 +11,11 @@ import DMModal from './DMmodal';
 import PhotoEdit from './photoEdit';
 
 import option_button from './option_button.png';
+
+import SimpleImageSlider from "react-simple-image-slider";
+import { render } from "@testing-library/react";
+
+
 {/* <UserPhotoComponent 
                 current_user={nickname}
                 profileImage={profile}
@@ -21,17 +27,22 @@ import option_button from './option_button.png';
                */}
 
 function UserPhotoComponent({ postId, current_user, profileImage, posted_username, photos, hashtags, description }) {
+  console.log(photos)
   const settings = {
     dots: true,
-    // infinite: true,
-    // speed: 500,
+    infinite: true,
+    speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
-  };
+    slidesToScroll: 1,
+    adaptiveHeight: true
+  }
+
+  // const firstPhoto = photos.length > 0 ? photos[0] : null; // 첫 번째 사진 가져오기
 
   const [DMmodalIsOpen, setDMModalIsOpen] = useState(false);            //DM 모달
   const [PhotomodalIsOpen, setPhotoModalIsOpen] = useState(false);      //Photo 모달
   const [optionVisible, setOptionVisible] = useState(false);
+
 
   const handleDMClick = () => {
     setDMModalIsOpen(true);
@@ -48,6 +59,10 @@ function UserPhotoComponent({ postId, current_user, profileImage, posted_usernam
   };
 
   const handleEditClick = () => {
+    if(current_user !== posted_username){
+      alert('접근 권한이 없습니다!');
+      return
+    }
     setPhotoModalIsOpen(true);
   };
 
@@ -56,6 +71,11 @@ function UserPhotoComponent({ postId, current_user, profileImage, posted_usernam
   };
 
   const handleDeleteClick = async () => {
+    if(current_user !== posted_username){
+      alert('접근 권한이 없습니다!');
+      return;
+    }
+
     if (window.confirm('이 게시물을 삭제하시겠습니까?')){
       try {
         const response = await fetch(`/api/post/${postId}`, {
@@ -73,8 +93,16 @@ function UserPhotoComponent({ postId, current_user, profileImage, posted_usernam
         console.error('게시물 삭제 중 오류 발생', error)
       }
     }
-    
+
   };
+
+  const renderPhotos = (photos, postId) => {
+    return photos.map((photo, index) => (
+      <div key={`${postId}-${index}`}>
+        <img src={photo} className='photo' alt={`photo${index}`} />
+      </div>
+    ));
+  }
 
 
   return(
@@ -101,22 +129,46 @@ function UserPhotoComponent({ postId, current_user, profileImage, posted_usernam
 
         {/* 사진이 표시되는 곳 */}
         <div className='photo-container'>
-          {/* 일단 슬라이더 기능은 스킵 */}
           {/* <Slider {...settings}>
-            {example_photos.map((example_photos, index) => (
-              <div key = {index}>
-                <img src={example_photos} className='photo' alt={`photo${index + 1}`} />
-              </div>
-            ))}
-          </Slider> */}
-          {/* <img src={photo_example1} className='photo' alt='photo' /> */}
-          <Slider {...settings}>
             {photos.map((photo, index) => (
               <div key={`${postId}-${index}`}>
                 <img src={photo} className='photo' alt={`photo${index}`} />
               </div>
-            ))}
-          </Slider>
+              
+              ))}
+          </Slider> */}
+
+          {/* <Slider {...settings}>
+            {renderPhotos(photos, postId)}
+          </Slider> */}
+
+          {/* <Slider {...settings}>
+            <div>
+              <img src={photos[0]} className='photo' alt='photo0' />
+            </div>
+            <div>
+              <img src={photos[1]} className='photo' alt='photo1' />
+            </div>
+            <div>
+              <img src={photos[2]} className='photo' alt='photo2' />
+            </div>
+            <div>
+              <img src={photos[3]} className='photo' alt='photo3' />
+            </div>
+          </Slider> */}
+          
+          <SimpleImageSlider
+            width={896}
+            height={504}
+            images={photos.map(photo => ({ url: photo }))}
+            showBullets={true}
+            showNavs={true}
+          />
+
+         
+          {/* {firstPhoto && (
+            <img src={firstPhoto} className='photo' alt={`photo`} />
+          )} */}
           {/* <img src={photo_example1} className='photo' alt='photo' /> */}
         </div>
 

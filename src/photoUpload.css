@@ -23,13 +23,14 @@
 }
 
 .preview-images {
-    width: 400px; /* 정사각형의 가로 크기 */
-    height: 400px; /* 정사각형의 세로 크기 */
+    width: 30vw; /* 정사각형의 가로 크기 */
+    height: 30vw; /* 정사각형의 세로 크기 */
     display: flex; /* Flexbox 컨테이너로 설정 */
     justify-content: center; /* 수평 중앙 정렬 */
     align-items: center; /* 수직 중앙 정렬 */
     overflow: hidden; /* 내용이 넘치면 잘라냄 */
     position: relative; /* 자식 요소의 위치 지정을 위해 부모 요소에 대한 상대적 위치 설정 */
+    margin: 5px;
 }
 
 .preview-image img {

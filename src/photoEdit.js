@@ -21,7 +21,7 @@ function PhotoEdit({ postId, closeModal }) {
                     if (Array.isArray(data.keywords)) {
                         setKeywords(data.keywords.join(', '));
                     }
-                    setPhotos(data.photos);
+                    setPhotos(data.photos || []);
                 } else {
                     const responseData = await response.json();
                     console.error('게시물 정보를 가져오지 못했습니다: ', responseData);
@@ -80,8 +80,8 @@ function PhotoEdit({ postId, closeModal }) {
             <div className='photoedit-modal-content'>
                 <h2>Edit Photo</h2>
                 <div className='photoedit-preview-image'>
-                    {photos.map((photo, index) => (
-                        <img key={index} src={`data:image/jpeg;base64,${photo.photo_data}`} alt={`Preview ${index}`} />
+                    {photos.map((photos, index) => (
+                        <img key={index} src={photos} alt={`Photo ${index}`} />
                     ))}
                 </div>
                 <textarea

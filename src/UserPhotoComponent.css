@@ -65,7 +65,6 @@
   /* background-color: transparent;  */
   /* 기본값은 transparent입니다 -> 디버깅을 위해 구역 확인용으로 색 바꿈 */
   background-color: rgb(220, 107, 167);
-
   border : 1px solid black;
   margin: auto;
 }
@@ -94,4 +93,33 @@
   object-fit: contain; /* 이미지가 컨테이너에 맞도록 설정 */
   /* margin-left: auto; */
   cursor: pointer; /* 커서를 포인터로 변경 */
+}
+
+.my-slider {
+  max-width: 100%;      /* 이미지의 최대 너비를 컨테이너의 너비에 맞게 설정 */
+  max-height: 100%;     /* 이미지의 최대 높이를 컨테이너의 높이에 맞게 설정 */
+  object-fit: contain;  /* 이미지가 컨테이너에 맞도록 설정 */
+}
+
+
+.slick-slide {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+.slick-list {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+}
+
+
+.slick-dots {
+  bottom: 10px; /* Adjust this value as needed */
+}
+
+.slick-prev, .slick-next {
+  z-index: 1;
 }

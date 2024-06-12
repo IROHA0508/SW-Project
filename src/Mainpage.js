@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useActionData, useNavigate } from 'react-router-dom';
 import Slider from 'react-slick'; // 사진 슬라이더
 import "slick-carousel/slick/slick.css"; 
@@ -31,12 +31,18 @@ function Main() {
   const [userList_name, setUserList_name] = useState([]);
   //업로드 사진 목록
   const [uploadPhotos, setUploadPhotos] = useState([]);
+  // 키워드 검색
+  const [searchKeyword, setSearchKeyword] = useState('');
+  // 검색 결과
+  const [searchResults, setSearchResults] = useState([]);
+  // 로딩 상태 
 
   useEffect(()=>{
     fetchUserInfo();
     fetchAllUserNickname();
     fetchUploadPhotos();
   }, []);
+
  
   const fetchUserInfo = async () => {
     try {
@@ -122,6 +128,27 @@ const fetchUploadPhotos = async () => {
   }
   };
 
+  const searchPhotos = async () => {
+    try {
+      const response = await fetch(`/api/searchphotos?keyword=${searchKeyword}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);  
+        setSearchResults(data);
+      } else {
+        console.error('검색 결과를 가져오는 데 실패했습니다');
+      }
+    } catch (error) {
+      console.error('검색 결과를 가져오는 중 오류 발생', error);
+    }
+  };
+
   //모달 열기
   const openModal = () => {
     setModalOpen(true);
@@ -150,6 +177,8 @@ const fetchUploadPhotos = async () => {
     slidesToShow: 1,
     slidesToScroll: 1
   };
+  // 검색결과가 있을 경우 사용하고, 없을 시 기존의 uploadPhotos 사용
+  const displayedPhotos = searchKeyword ? searchResults : uploadPhotos;
 
   return (
     <div>
@@ -174,26 +203,34 @@ const fetchUploadPhotos = async () => {
           
           <div className='searchbar-container' id='searchbar'>
             <img src={searchicon} className="search-icon" alt="search icon"/>
-            <input type="text" className="search-input" placeholder="여기는 검색하는 곳입니다" />
-            <button className="search-button">검색</button>
+            <input 
+              type="text" 
+              className="search-input" 
+              placeholder="여기는 검색하는 곳입니다" 
+              value={searchKeyword}
+              onChange={(e) => setSearchKeyword(e.target.value)}
+            />
+            <button className="search-button" onClick={searchPhotos}>검색</button>
           </div>
 
           <div className='main-user-content'>
             <div className='main-userPhoto'>
 
-              {uploadPhotos.map(photo => (
-                <div key={photo.id}>
+              {displayedPhotos.map(photo => {
+                console.log(photo.photo_urls);
+                return(
                   <UserPhotoComponent
-                    postoId={photo.id}
+                    key={photo.id}
+                    postId={photo.id}
                     current_user={nickname}
                     profileImage={profile}
                     posted_username={photo.nickname}
-                    photos={[`data:image/jpeg;base64,${photo.photo_data}`]}
+                    photos={photo.photo_urls}
                     hashtags={photo.hashtags}
                     description={photo.description}
                   />
-                </div>
-              ))}
+                );    
+              })}
 
               {/* <UserPhotoComponent 
                 current_user={nickname}

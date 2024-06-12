@@ -7,8 +7,10 @@ function UploadModal({ closeModal }){
     const [keywords, setKeywords] = useState('');
 
     const handlePhotoUpload = (e) => {
-        const uploadedPhotos = e.target.files;
-        setPhotos([...photos, ...uploadedPhotos]);
+        // const uploadedPhotos = e.target.files;
+        // setPhotos([...photos, ...uploadedPhotos]);
+        const uploadedPhotos = Array.from(e.target.files);
+        setPhotos((prevPhotos) => [...prevPhotos, ...uploadedPhotos]);
     }
 
     const handleSubmit = async() => {
