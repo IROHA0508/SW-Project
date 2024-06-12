@@ -52,33 +52,33 @@ function SignUp() {
 
 
   return (
-    <div className="container">
-      <div className='form-container'>
+    <div className='signup-container'>
+      <div className='signup-form-container'>
         <div>
           <h1>회원가입</h1>
           <form onSubmit={handleSubmit}>
             <p>이메일</p>
-            <div className="input-container">
+            <div className='signup-input-container'>
               <input
                 type="email"
-                placeholder='이메일 입력'
+                placeholder='이메일 주로를 입력하세요'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
             <p>비밀번호</p>
-            <div className="input-container">
+            <div className='signup-input-container'>
               <input
                 type="password"
-                placeholder='비밀번호 입력(8~20자)'
+                placeholder='비밀번호를 입력(8~20자)하세요'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
             <p>비밀번호 확인</p>
-            <div className="input-container">
+            <div className='signup-input-container'>
               <input
                 type="password"
                 placeholder="비밀번호 확인"
@@ -88,17 +88,17 @@ function SignUp() {
               />
             </div>
             <p>닉네임</p>
-            <div className="input-container">
+            <div className='signup-input-container'>
               <input
                 type="text"
-                placeholder='닉네임을 입력해주세요'
+                placeholder='닉네임을 입력하세요'
                 value={nickname}
                 onChange={(e) => setNickname(e.target.value)}
                 required
               />
             </div>
 
-            <button className = "signup-button" type="submit">회원가입</button>
+            <button className = 'signup-button' type="submit">회원가입</button>
 
           </form>
           {message && <p>{message}</p>}
