@@ -42,15 +42,16 @@ def save_uploaded_photos(photos):
                 padding = (delta_w // 2, delta_h // 2, delta_w - (delta_w // 2), delta_h - (delta_h // 2))
                 new_image = ImageOps.expand(image, padding, (255, 255, 255))  # 흰색 배경
                 
-                # new_image.save(filepath)  # 조정된 이미지를 저장
-                # photo_paths.append(filepath)
+                new_image.save(filepath)  # 조정된 이미지를 저장
+                photo_paths.append(filepath)
 
                 # 파일 확장자를 png로 변환하여 저장
-                png_filename = os.path.splitext(filename)[0] + '.png'
-                png_filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], png_filename)
-                new_image.save(png_filepath, 'PNG')
+                # png_filename = os.path.splitext(filename)[0] + '.png'
+                # png_filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], png_filename)
+                # new_image.save(png_filepath, 'PNG')
                 
-                photo_paths.append(png_filepath)
+                # photo_paths.append(png_filepath)
+                photo_paths.append(filepath)
             except Exception as e:
                 print(f"이미지 처리 중 오류 발생: {str(e)}")
         else:
