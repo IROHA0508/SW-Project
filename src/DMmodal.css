@@ -1,3 +1,5 @@
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
+
 /* 모달 스타일 설정 */
 .custom-modal-content {
   position: fixed;
