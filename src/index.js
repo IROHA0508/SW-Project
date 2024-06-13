@@ -16,6 +16,7 @@ root.render(
       <Route path = "/" element={<Login />} />
       <Route path = "/signup" element={<SignUp />} />
       <Route path = "/main" element={<Main />} />
+      <Route path = "/guestmain" element={<GuestLogin />} />
     </Routes>
   </BrowserRouter>, 
 );
