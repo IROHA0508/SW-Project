@@ -46,9 +46,12 @@ function UploadModal({ closeModal }){
             <div className='modal-content'>
                 <h2>Upload Photo</h2>
                 <div className='preview-images'>
-                    {photos.map((photo, index) => (
+                    {photos.length > 0 && (
+                        <img src={URL.createObjectURL(photos[0])} alt="Preview 0" />
+                    )}
+                    {/* {photos.map((photo, index) => (
                             <img key={index} src={URL.createObjectURL(photo)} alt={`Preview ${index}`} />
-                        ))}
+                        ))} */}
                 </div>
                 <input type='file' accept='image/*' onChange={handlePhotoUpload} multiple/>
                 <textarea

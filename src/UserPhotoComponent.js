@@ -96,13 +96,13 @@ function UserPhotoComponent({ postId, current_user, profileImage, posted_usernam
 
   };
 
-  const renderPhotos = (photos, postId) => {
-    return photos.map((photo, index) => (
-      <div key={`${postId}-${index}`}>
-        <img src={photo} className='photo' alt={`photo${index}`} />
-      </div>
-    ));
-  }
+  // const renderPhotos = (photos, postId) => {
+  //   return photos.map((photo, index) => (
+  //     <div key={`${postId}-${index}`}>
+  //       <img src={photo} className='photo' alt={`photo${index}`} />
+  //     </div>
+  //   ));
+  // }
 
 
   return(

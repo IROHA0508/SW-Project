@@ -80,9 +80,12 @@ function PhotoEdit({ postId, closeModal }) {
             <div className='photoedit-modal-content'>
                 <h2>Edit Photo</h2>
                 <div className='photoedit-preview-image'>
-                    {photos.map((photos, index) => (
+                    {photos.length > 0 && (
+                        <img src={photos[0]} alt="Photo 0" />
+                    )}
+                    {/* {photos.map((photos, index) => (
                         <img key={index} src={photos} alt={`Photo ${index}`} />
-                    ))}
+                    ))} */}
                 </div>
                 <textarea
                 placeholder='Description'
