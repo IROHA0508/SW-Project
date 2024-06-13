@@ -246,7 +246,11 @@ def search_photos():
             JOIN users ON post.user_id = users.id
             LEFT JOIN photos ON photos.post_id = post.id
             LEFT JOIN keywords ON post.id = keywords.post_id
-            WHERE keywords.keyword LIKE ?
+            WHERE post.id IN (
+                SELECT post_id 
+                FROM keywords 
+                WHERE keyword LIKE ?
+            )
             GROUP BY post.id
             ORDER BY post.upload_date DESC
         """
