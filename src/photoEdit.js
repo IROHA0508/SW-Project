@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './photoEdit.css';
 
-function PhotoEdit({ photoId, closeModal }) {
-    const [photo, setPhoto] = useState('');
+function PhotoEdit({ postId, closeModal }) {
+    const [photos, setPhotos] = useState([]);
     const [description, setDescription] = useState('');
     const [keywords, setKeywords] = useState('');
 
-        //게시물 정보 가져오기
+    //게시물 정보 가져오기
     useEffect(() => {
-        const fetchPhotoInfo = async () => {
+        const fetchPostInfo = async () => {
             try {
-                const response = await fetch(`/api/photo/${photoId}`, {
+                const response = await fetch(`/api/post/${postId}`, {
                     method: 'GET',
                     credentials: 'include'
                 });
@@ -21,17 +21,18 @@ function PhotoEdit({ photoId, closeModal }) {
                     if (Array.isArray(data.keywords)) {
                         setKeywords(data.keywords.join(', '));
                     }
-                    setPhoto(data.photo_data);
+                    setPhotos(data.photos || []);
                 } else {
-                    console.error('게시물 정보를 가져오지 못했습니다');
+                    const responseData = await response.json();
+                    console.error('게시물 정보를 가져오지 못했습니다: ', responseData);
                 }
             } catch (error) {
                 console.error('게시물 정보 가져오는 중 오류 발생', error);
             }
         };
 
-        fetchPhotoInfo();
-    }, [photoId]);
+        fetchPostInfo();
+    }, [postId]);
 
     // 내용이 수정될 때마다 상태 업데이트
     const handleDescriptionChange = (e) => {
@@ -51,7 +52,7 @@ function PhotoEdit({ photoId, closeModal }) {
         }
         
         try {
-            const response = await fetch(`/api/photo/${photoId}`, {
+            const response = await fetch(`/api/post/${postId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -66,7 +67,8 @@ function PhotoEdit({ photoId, closeModal }) {
                 closeModal();
                 window.location.reload();
             } else {
-                console.error('게시물 수정에 실패했습니다');
+                const responseData = await response.json();
+                console.error('게시물 수정에 실패했습니다: ', responseData);
             }
         } catch (error) {
             console.error('게시물 수정 중 오류가 발생', error)
@@ -78,18 +80,23 @@ function PhotoEdit({ photoId, closeModal }) {
             <div className='photoedit-modal-content'>
                 <p>Edit Photo</p>
                 <div className='photoedit-preview-image'>
-                    <img src={`data:image/jpeg;base64,${photo}`} alt='' />
+                    {photos.length > 0 && (
+                        <img src={photos[0]} alt="Photo 0" />
+                    )}
+                    {/* {photos.map((photos, index) => (
+                        <img key={index} src={photos} alt={`Photo ${index}`} />
+                    ))} */}
                 </div>
                 <textarea
-                placeholder='사진에 대한 설명을 입력하세요'
-                value={description}
-                onChange={handleDescriptionChange}
+                    placeholder='사진에 대한 설명을 입력하세요'
+                    value={description}
+                    onChange={handleDescriptionChange}
                 />
                 <input
-                type="text"
-                placeholder='키워드를 입력하세요 (comma separated)'
-                value={keywords}
-                onChange={handleKeywordsChange}
+                    type="text"
+                    placeholder='키워드를 입력하세요 (comma separated)'
+                    value={keywords}
+                    onChange={handleKeywordsChange}
                 />
                 <div className="photoedit-button-container">
                 <button onClick={handleSubmit}>Save</button>

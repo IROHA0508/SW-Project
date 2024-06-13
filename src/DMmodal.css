@@ -126,7 +126,7 @@
   
   font-family: 'NanumSquare', sans-serif ;
   font-size: 1.2em;
-  font-weight: bold;
+  /* font-weight: bold; */
   color: #000000; 
   margin: 0;
 }

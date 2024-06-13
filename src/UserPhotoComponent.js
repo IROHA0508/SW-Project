@@ -10,24 +10,21 @@ import DMModal from './DMmodal';
 import PhotoEdit from './photoEdit';
 
 import option_button from './option_button.png';
-{/* <UserPhotoComponent 
-                current_user={nickname}
-                profileImage={profile}
-                posted_username="유애나"
-                photos={photo_example2}
-                hashtags={['아이유']}
-                description="아이유 인천공항 (사진에 대한 설명이 들어갑니다)"
-              />
-               */}
 
-function UserPhotoComponent({ photoId, current_user, profileImage, posted_username, photos, hashtags, description }) {
+import SimpleImageSlider from "react-simple-image-slider";
+import { render } from "@testing-library/react";
+
+
+function UserPhotoComponent({ postId, current_user, profileImage, posted_username, photos, hashtags, description }) {
+  console.log(photos)
   const settings = {
     dots: true,
-    // infinite: true,
-    // speed: 500,
+    infinite: true,
+    speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
-  };
+    slidesToScroll: 1,
+    adaptiveHeight: true
+  }
 
   const [DMmodalIsOpen, setDMModalIsOpen] = useState(false);            //DM 모달
   const [PhotomodalIsOpen, setPhotoModalIsOpen] = useState(false);      //Photo 모달
@@ -48,6 +45,10 @@ function UserPhotoComponent({ photoId, current_user, profileImage, posted_userna
   };
 
   const handleEditClick = () => {
+    if(current_user !== posted_username){
+      alert('접근 권한이 없습니다!');
+      return
+    }
     setPhotoModalIsOpen(true);
   };
 
@@ -56,9 +57,14 @@ function UserPhotoComponent({ photoId, current_user, profileImage, posted_userna
   };
 
   const handleDeleteClick = async () => {
+    if(current_user !== posted_username){
+      alert('접근 권한이 없습니다!');
+      return;
+    }
+
     if (window.confirm('이 게시물을 삭제하시겠습니까?')){
       try {
-        const response = await fetch(`/api/photo/${photoId}`, {
+        const response = await fetch(`/api/post/${postId}`, {
           method: 'DELETE',
           credentials: 'include'
         })
@@ -73,7 +79,6 @@ function UserPhotoComponent({ photoId, current_user, profileImage, posted_userna
         console.error('게시물 삭제 중 오류 발생', error)
       }
     }
-    
   };
 
 
@@ -99,19 +104,14 @@ function UserPhotoComponent({ photoId, current_user, profileImage, posted_userna
           )}
         </div>
 
-        {/* 사진이 표시되는 곳 */}
-        <div className='photocomponent-photo-container'>
-          {/* 일단 슬라이더 기능은 스킵 */}
-          {/* <Slider {...settings}>
-            {example_photos.map((example_photos, index) => (
-              <div key = {index}>
-                <img src={example_photos} className='photo' alt={`photo${index + 1}`} />
-              </div>
-            ))}
-          </Slider> */}
-          {/* <img src={photo_example1} className='photo' alt='photo' /> */}
-          <img src={photos} className='photocomponent-photo' alt='photo' />
-          {/* <img src={photo_example1} className='photo' alt='photo' /> */}
+        <div className='photo-container'>
+          <SimpleImageSlider
+            width={896}
+            height={504}
+            images={photos.map(photo => ({ url: photo }))}
+            showBullets={true}
+            showNavs={true}
+          />
         </div>
 
         {/* 해시태그 달 곳 */}
@@ -126,7 +126,7 @@ function UserPhotoComponent({ photoId, current_user, profileImage, posted_userna
       </div>
 
       {/* photoEdit 모달 레이어 창 */}
-      {PhotomodalIsOpen && <PhotoEdit photoId={photoId} closeModal={closePhotoModal} />}
+      {PhotomodalIsOpen && <PhotoEdit postId={postId} closeModal={closePhotoModal} />}
     </div>
   );
 }
