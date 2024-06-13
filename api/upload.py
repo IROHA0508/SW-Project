@@ -5,7 +5,8 @@ import os
 from werkzeug.utils import secure_filename
 from flask import current_app
 
-import base64
+from PIL import Image, ImageOps
+import imghdr
 
 upload = Blueprint('upload', __name__)
 
