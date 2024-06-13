@@ -6,16 +6,16 @@ from werkzeug.utils import secure_filename
 from flask import current_app
 
 from PIL import Image, ImageOps
-import imghdr
 
 upload = Blueprint('upload', __name__)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+UPLOAD_FOLDER = 'image'
+TARGET_SIZE = (702, 500)  # 원하는 사이즈 (가로, 세로)
 
 def allowed_file(photoname):
     return '.' in photoname and photoname.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-UPLOAD_FOLDER = 'image'
 
 def save_uploaded_photos(photos):
     photo_paths = []
@@ -23,8 +23,26 @@ def save_uploaded_photos(photos):
         if photo and allowed_file(photo.filename):
             filename = secure_filename(photo.filename)
             filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
-            photo.save(filepath)
-            photo_paths.append(filepath)
+            # photo.save(filepath)
+            # photo_paths.append(filepath)
+            
+            try:
+                image = Image.open(filepath)
+                image.thumbnail(TARGET_SIZE, Image.Resampling.LANCZOS)  #원본 비율 유지하면서 TARGET_SIZE에 맞춤
+                
+                # 패딩을 추가하여 정확한 TARGET_SIZE에 맞춤
+                delta_w = TARGET_SIZE[0] - image.size[0]
+                delta_h = TARGET_SIZE[1] - image.size[1]
+                padding = (delta_w // 2, delta_h // 2, delta_w - (delta_w // 2), delta_h - (delta_h // 2))
+                new_image = ImageOps.expand(image, padding, (255, 255, 255))  # 흰색 배경
+                
+                # 변경된 이미지를 다시 저장
+                new_image.save(filepath)
+                photo_paths.append(filepath)
+                
+            except Exception as e:
+                print(f'이미지 처리 중 오류 발생: {e}')
+                continue
         else:
             print(f'허용되지 않은 파일 형식: {photo.filename}')
     return photo_paths
