@@ -6,7 +6,7 @@ function PhotoEdit({ postId, closeModal }) {
     const [description, setDescription] = useState('');
     const [keywords, setKeywords] = useState('');
 
-        //게시물 정보 가져오기
+    //게시물 정보 가져오기
     useEffect(() => {
         const fetchPostInfo = async () => {
             try {
@@ -78,7 +78,7 @@ function PhotoEdit({ postId, closeModal }) {
     return (
         <div className='photoedit-modal'>
             <div className='photoedit-modal-content'>
-                <h2>Edit Photo</h2>
+                <p>Edit Photo</p>
                 <div className='photoedit-preview-image'>
                     {photos.length > 0 && (
                         <img src={photos[0]} alt="Photo 0" />
@@ -88,15 +88,15 @@ function PhotoEdit({ postId, closeModal }) {
                     ))} */}
                 </div>
                 <textarea
-                placeholder='Description'
-                value={description}
-                onChange={handleDescriptionChange}
+                    placeholder='사진에 대한 설명을 입력하세요'
+                    value={description}
+                    onChange={handleDescriptionChange}
                 />
                 <input
-                type="text"
-                placeholder="Keywords (comma separated)"
-                value={keywords}
-                onChange={handleKeywordsChange}
+                    type="text"
+                    placeholder='키워드를 입력하세요 (comma separated)'
+                    value={keywords}
+                    onChange={handleKeywordsChange}
                 />
                 <div className="photoedit-button-container">
                 <button onClick={handleSubmit}>Save</button>

@@ -42,10 +42,10 @@ function UploadModal({ closeModal }){
     };
 
     return (
-        <div className='modal'>
-            <div className='modal-content'>
-                <h2>Upload Photo</h2>
-                <div className='preview-images'>
+        <div className='upload-modal'>
+            <div className='upload-modal-content'>
+                <p>Upload Photo</p>
+                <div className='upload-preview-image'>
                     {photos.length > 0 && (
                         <img src={URL.createObjectURL(photos[0])} alt="Preview 0" />
                     )}
@@ -55,17 +55,17 @@ function UploadModal({ closeModal }){
                 </div>
                 <input type='file' accept='image/*' onChange={handlePhotoUpload} multiple/>
                 <textarea
-                    placeholder='Description'
+                    placeholder='사진에 대한 설명을 입력하세요'
                     value={description}
                     onChange={(e)=>setDescription(e.target.value)}
                 />
                 <input
                     type='text'
-                    placeholder='Keywords (comma separated)'
+                    placeholder='키워드를 입력하세요 (comma separated)'
                     value={keywords}
                     onChange={(e)=>setKeywords(e.target.value)}
                 />
-                <div className='button-container'>
+                <div className='upload-button-container'>
                     <button onClick={handleSubmit}>Upload</button>
                     <button onClick={closeModal}>Cancel</button>
                 </div>

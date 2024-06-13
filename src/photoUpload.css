@@ -1,5 +1,7 @@
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
+
 /* 모달 전체 스타일 */
-.modal {
+.upload-modal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -9,7 +11,7 @@
 }
 
 /* 모달 내용 스타일 */
-.modal-content {
+.upload-modal-content {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
@@ -17,23 +19,29 @@
 }
 
 /* 제목 스타일 */
-.modal-content h2 {
+.upload-modal-content p {
+    font-family: 'NanumSquare', sans-serif ;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #000000; 
+    margin: 0;
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
-.preview-images {
-    width: 30vw; /* 정사각형의 가로 크기 */
-    height: 30vw; /* 정사각형의 세로 크기 */
+.upload-preview-image {
+    width: 100%; /* 정사각형의 가로 크기 */
+    height: 350px; /* 정사각형의 세로 크기 */
     display: flex; /* Flexbox 컨테이너로 설정 */
     justify-content: center; /* 수평 중앙 정렬 */
     align-items: center; /* 수직 중앙 정렬 */
     overflow: hidden; /* 내용이 넘치면 잘라냄 */
     position: relative; /* 자식 요소의 위치 지정을 위해 부모 요소에 대한 상대적 위치 설정 */
-    margin: 5px;
+
+    margin-bottom: 10px;
 }
 
-.preview-image img {
+.upload-preview-image img {
     max-width: 100%; /* 이미지가 부모 요소의 너비를 초과하지 않도록 설정 */
     max-height: 100%; /* 이미지가 부모 요소의 높이를 초과하지 않도록 설정 */
     width: auto; /* 이미지의 너비를 자동으로 조정 */
@@ -46,8 +54,13 @@
 }
 
 /* 내용 입력 스타일 */
-.modal-content input,
-.modal-content textarea {
+.upload-modal-content input,
+.upload-modal-content textarea {
+    font-family: 'NanumSquare', sans-serif ;
+    font-size: 1em;
+    font-weight: bold;
+    color: #000000; 
+
     width: 100%;
     margin-bottom: 10px;
     padding: 8px;
@@ -56,28 +69,33 @@
 }
 
 /* 버튼 스타일 */
-.modal-content button {
+.upload-modal-content button {
     padding: 10px 20px;
-    background-color: rgb(147, 112, 219);
+    background-color: #6667AB;
     color: #fff;
     border: none;
     border-radius: 3px;
     cursor: pointer;
+
+    font-family: 'NanumSquare', sans-serif ;
+    font-size: 0.9em;
+    font-weight: bold;
 }
 
 /* 버튼 컨테이너 스타일 */
-.button-container {
+.upload-button-container {
     display: flex;
     justify-content: flex-end; /* 우측 정렬 */
     flex-wrap: nowrap;
-    width: 55%;
+    width: 100%;
 }
 
 /* 버튼 간격 조절 */
-.modal-content button + button {
-    margin-left: 5px;
+.upload-modal-content button + button {
+    
+    margin-left: 15px;
 }
 
-.modal-content button:hover {
-    background-color: #0056b3;
+.upload-modal-content button:hover {
+    background-color: #4b4b7c;
 }

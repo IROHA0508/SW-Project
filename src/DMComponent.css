@@ -1,28 +1,130 @@
-.DMComponent{
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
+
+
+.DMComponent {
+  display: flex;
+  flex-direction: column; /* 세로로 확장되도록 설정 */
+  width: 100%;
+  border: 1px solid #ccc;
+  background-color: #FFFFFF;
+  overflow: hidden; /* overflow 숨기기 */
+  transition: max-height 0.3s ease; /* 애니메이션 */
+  max-height: 80px; /* 기본 높이 설정 */
+
+  cursor: pointer;
+}
+
+.DMComponent:hover::after {
+  opacity: 1; /* 커서를 올려놓으면 툴팁이 보이도록 설정 */
+}
+
+.DMComponent.expanded {
+  max-height: 600px; /* 확장된 높이 설정 */
+}
+
+.DMComponent-header {
   display: flex;
   flex-direction: row;
-  width: 100%;
-  height: 10%;
-  border: 1px solid black;
+  height: 60px; /* 헤더 높이 설정 */
+}
 
-  background-color: lightcyan;
+.DMComponent-profilecontainer {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  width: 7.2%;
+  height: 100%;
+  border: 1px solid #ccc;
 }
 
 .DMComponent-profile-image {
-  width: 20%;  /* 이미지의 너비를 자동으로 설정 */
-  height: 100%; /* 이미지의 높이를 부모 요소의 높이에 맞게 설정 */
-  max-height: 80%; /* 이미지의 최대 높이를 부모 요소의 높이에 맞게 설정 */
-  object-fit: contain; /* 이미지가 컨테이너에 맞도록 설정 */
+  width: auto;          /* 이미지의 너비를 자동으로 설정 */
+  height: 80%;         /* 이미지의 높이를 부모 요소의 높이에 맞게 설정 */
+  max-height: 90%;     /* 이미지의 최대 높이를 부모 요소의 높이에 맞게 설정 */
+  object-fit: contain;  /* 이미지가 컨테이너에 맞도록 설정 */
   border-radius: 50%;
-  margin-left: 0.5vw;
-  margin-top: 0.5vw;
-  margin-bottom: 0.5vw;
+  margin-left: 18%;
 }
 
-.DMComponent-messagebox{
+.DMComponent-sendername {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  justify-content: center;
+  align-self: center;
+  width: 10%;
   height: 100%;
-  border: 1px solid black;
+  border: 1px solid #ccc;
+  padding-left: 10px;
+
+  font-family: 'NanumSquare', sans-serif ;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.DMComponent-dmtitle {
+  display: flex;
+  flex-direction: column;
+  width: 53.3%;
+  height: 100%;
+  border: 1px solid #ccc;
+  padding-left: 10px;
+}
+
+.DMComponent-dmstatus {
+  width: 8.2%;
+  height: 100%;
+  border: 1px solid #ccc;
+
+  padding-left: 10px;
+}
+
+.DMComponent-senttime {
+  width: 21%;
+  height: 100%;
+  border: 1px solid #ccc;
+  padding-left: 20px;
+}
+
+.DMComponent-dmmessage {
+  display: block;
+  padding: 10px;
+
+  border: 1px solid #ccc;
+}
+
+.DMComponent-dmmessage p {
+  white-space: pre-wrap;
+}
+
+
+.DMComponent-expanded-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.DMComponent-expanded-buttoncontainer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  gap: 10px; /* Add some space between the buttons */
+  background-color: #f9f9f9; /* Optional: background color to differentiate the button container */
+}
+
+.DMComponent-expanded-buttoncontainer button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #6667AB;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+
+  font-family: 'NanumSquare', sans-serif ;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.DMComponent-expanded-buttoncontainer button:hover {
+  background-color: #4b4c8c; 
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useActionData, useNavigate } from 'react-router-dom';
 import Slider from 'react-slick'; // 사진 슬라이더
 import "slick-carousel/slick/slick.css"; 
@@ -42,7 +42,6 @@ function Main() {
     fetchAllUserNickname();
     fetchUploadPhotos();
   }, []);
-
  
   const fetchUserInfo = async () => {
     try {
@@ -118,7 +117,6 @@ const fetchUploadPhotos = async () => {
   
   if (response.ok) {
     const data = await response.json();
-    console.log(data);
     setUploadPhotos(data);
     } else {
       console.error('사진 목록 가져오는데 실패했습니다');
@@ -177,6 +175,7 @@ const fetchUploadPhotos = async () => {
     slidesToShow: 1,
     slidesToScroll: 1
   };
+
   // 검색결과가 있을 경우 사용하고, 없을 시 기존의 uploadPhotos 사용
   const displayedPhotos = searchKeyword ? searchResults : uploadPhotos;
 
@@ -189,10 +188,11 @@ const fetchUploadPhotos = async () => {
 
         <div className='main-button-container'>
           <p>{nickname} 님</p>
-          <button className="main-header-button" onClick={handleDMboxclick}>DM</button>
-          <button className="main-header-button" onClick={openModal}>UpLoad</button>
-          <button className="main-header-button" onClick={handleLogout}>Log Out</button>        
+          <button className='main-header-button' onClick={handleDMboxclick}> DM </button>
+          <button className='main-header-button' onClick={openModal}> Upload </button>
+          <button className='main-header-button' onClick={handleLogout}> Log Out </button>        
         </div>
+
       </div>
 
       <DMboxModal isOpen = {modalDMboxIsOpen} closeModal={closeDMboxModal} current_username={nickname}/>
@@ -215,7 +215,6 @@ const fetchUploadPhotos = async () => {
 
           <div className='main-user-content'>
             <div className='main-userPhoto'>
-
               {displayedPhotos.map(photo => {
                 console.log(photo.photo_urls);
                 return(

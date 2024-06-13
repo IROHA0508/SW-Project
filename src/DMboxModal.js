@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
-
 import './DMboxmodal.css';
 import close_button from './close_button.png';
 import DMComponent from './DMComponent';
@@ -9,8 +8,10 @@ function DMboxModal({ isOpen, closeModal, current_username }) {
   const [receivedDMs, setReceivedDMs] = useState([]);
 
   useEffect(() => {
-    fetchReceivedDM();
-  }, []);
+    if (isOpen) {
+      fetchReceivedDM();
+    }
+  }, [isOpen]);
 
   const fetchReceivedDM = async () => {
     try {
@@ -33,6 +34,19 @@ function DMboxModal({ isOpen, closeModal, current_username }) {
     }
   };
 
+  const updateMessageStatus = (messageId, newStatus) => {
+    setReceivedDMs((prevDMs) =>
+      prevDMs.map((dm) =>
+        dm.message_id === messageId ? { ...dm, status: newStatus } : dm
+      )
+    );
+  };
+
+  const removeMessage = (messageId) => {
+    setReceivedDMs((prevDMs) => prevDMs.filter(dm => dm.message_id !== messageId));
+  };
+
+
   return (
     <Modal
       isOpen={isOpen}
@@ -40,28 +54,45 @@ function DMboxModal({ isOpen, closeModal, current_username }) {
       contentLabel="DMbox Modal"
       className="custom-modal-dmbox-content"
     >
-
       <div className='boxmodal-header'>
         <div className='boxbig-infocontainer'>
-          <div className='bosinfo-container'>
-            <p>{current_username}의 DM</p>
+          <div className='boxinfo-container'>
+            <p><span>{current_username}</span>의 DM</p>
           </div>
         </div>
-        <div className='boxclose-button-container'>
-          <img src={close_button} className='boxclose-button' alt='close' onClick={closeModal} />
-        </div>
+        
+        
       </div>
 
       <div className='box-receivedDM'>
+        <div className='boxmodal-rowinformation header'>
+          <div className='column profile-picture'>프로필</div>
+          <div className='column sender-name'>보낸 사람</div>
+          <div className='column title'>제목</div>
+          <div className='column read-status'>읽음</div>
+          <div className='column sent-time'>보낸 시간</div>
+        </div>
+
+        {/* 수신한 DM map으로 가져오기 */}
         {receivedDMs.map(dm => (
           <DMComponent
-            key={dm.id}
+            key={dm.message_id}
             senderName={dm.sender_name}
+            receiverName = {current_username} // 현재 접속한 사람이 받는 사람
+            title={dm.title}
             receivedDM={dm.message}
             DMsenttime={dm.timestamp}
             DMstatus={dm.status}
+            messageId={dm.message_id}
+            updateMessageStatus={updateMessageStatus} // 상태 업데이트 함수 전달
+            removeMessage={removeMessage} 
           />
         ))}
+
+        <div className='boxclose-button-container'>
+          {/* <img src={close_button} className='boxclose-button' alt='close' onClick={closeModal} /> */}
+          <button className='boxclose-button' onClick={closeModal}>Close</button>
+        </div>
       </div>
     </Modal>
   );

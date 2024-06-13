@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
 .responsive-div {
   display: flex;
   flex-direction: column;
@@ -19,17 +31,23 @@
   color: #000000;
 }
 
-.header-container {
+.commonheader-container {
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
   width: 100%;
-  max-width: 3150px;
+  max-width: 2160px;
   height: auto;
   gap: 15vw;
   padding-left: 1.5vw;
   padding-right: 1.5vw;
-  background: rgb(147, 112, 219);
+  /* background: rgb(169, 216, 196); */
+}
+
+.kaushan-script.header-text {
+  color: #000000; /* Replace with your desired color */
+  margin-left: 20%;
+  margin-top: 2%;
 }
 
 .header-text {
@@ -38,13 +56,13 @@
   height: auto;
   font-size: 5vw;
   text-align: center;
-  padding-left: 2vw;
+  /* padding-left: 2vw; */
   color: #000;
   font-family: 'Kaushan Script', cursive;
   margin: 0%;
 }
 
-.header-button-container {
+.commonheader-button-container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -52,19 +70,20 @@
   max-width: 3150px;
   height: auto;
   gap: 1vw;
-  padding-left: 0.5vw;
-  padding-right: 0.5vw;
+  /* padding-left: 0.5vw;
+  padding-right: 0.5vw; */
   background: rgb(255, 255, 255);
-  /* margin-left: 13vw; */
-
+  margin-top: 2%;
   align-self: stretch   ;
+
+  margin-left: -42%;
 }
 
-.button {
+.commonheader-button {
   text-decoration: none;
 }
 
-.button button {
+.commonheader-button button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,8 +94,7 @@
   gap: 8px;
   padding: 0.3vh 0.1vw;
   border-radius: 8px;
-  /* background: rgba(0, 0, 0, 0.56); */
-  background: rgba(255, 186, 186, 0.56);
+  background-color: #6667AB;
   box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.05);
   font-size: 1.5rem;
   font-weight: 500;
@@ -84,4 +102,8 @@
   color: #fff;
   border: none;
   cursor: pointer;
+}
+
+.commonheader-button button:hover {
+  background-color: #4b4b7c;
 }

@@ -6,18 +6,18 @@ function Common_header() {
   return (
     <div className="responsive-div" id="Naviagator">
 
-      <div className="header-container">
-        <p className="kaushan-script header-text">
+      <div className='commonheader-container'>
+        <p className='kaushan-script header-text'>
           Share Your Experience, Photo and Patience
         </p>
       
-        <div className="header-button-container">
-            <a href="about.html" className='button'>
+        <div className='commonheader-button-container'>
+            <a href="about.html" className='commonheader-button'>
               <button>About US</button>
             </a>
 
-            <Link to = '/signup' className='button'>
-              <button>Sign up</button>
+            <Link to = '/signup' className='commonheader-button'>
+              <button>회원가입</button>
             </Link>
         </div>
       </div>
