@@ -106,8 +106,8 @@ function UserPhotoComponent({ postId, current_user, profileImage, posted_usernam
 
         <div className='photo-container'>
           <SimpleImageSlider
-            width={896}
-            height={504}
+            width={690}
+            height={500}
             images={photos.map(photo => ({ url: photo }))}
             showBullets={true}
             showNavs={true}

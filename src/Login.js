@@ -52,6 +52,10 @@ function Login() {
   }
 }
 
+const handleGuestLogin = () => {
+  navigate('/guestmain');
+}
+
 
   return (
     <div className="responsive-div" id="Naviagator">
@@ -95,7 +99,7 @@ function Login() {
             <div className='login-button-group'>
               <button type="submit" className='login-button'>로그인</button>
               <p>또는</p>
-              <button type="submit" className='guest-login-button'>게스트 로그인</button>
+              <button type="submit" className='guest-login-button' onClick={handleGuestLogin}>게스트 로그인</button>
             </div>
           </div>
         </div>

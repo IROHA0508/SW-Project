@@ -52,6 +52,7 @@ function GuestLogin() {
                 <div className='guest-main-button-container'>
                     <p>게스트</p>
                     <button className="guest-main-header-button" onClick={handleLogout}>Log Out</button>
+                    
                 </div>
             </div>
 
