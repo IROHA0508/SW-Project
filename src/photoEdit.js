@@ -76,18 +76,18 @@ function PhotoEdit({ photoId, closeModal }) {
     return (
         <div className='photoedit-modal'>
             <div className='photoedit-modal-content'>
-                <h2>Edit Photo</h2>
+                <p>Edit Photo</p>
                 <div className='photoedit-preview-image'>
                     <img src={`data:image/jpeg;base64,${photo}`} alt='' />
                 </div>
                 <textarea
-                placeholder='Description'
+                placeholder='사진에 대한 설명을 입력하세요'
                 value={description}
                 onChange={handleDescriptionChange}
                 />
                 <input
                 type="text"
-                placeholder="Keywords (comma separated)"
+                placeholder='키워드를 입력하세요 (comma separated)'
                 value={keywords}
                 onChange={handleKeywordsChange}
                 />
