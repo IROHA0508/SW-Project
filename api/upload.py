@@ -5,17 +5,21 @@ import os
 from werkzeug.utils import secure_filename
 from flask import current_app
 
-from PIL import Image
+from PIL import Image, ImageOps
+import imghdr
 import base64
 
 upload = Blueprint('upload', __name__)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+UPLOAD_FOLDER = 'image'
+TARGET_SIZE = (718, 504)  # 원하는 사이즈 (가로, 세로)
 
 def allowed_file(photoname):
-    return '.' in photoname and photoname.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-UPLOAD_FOLDER = 'image'
+    file_ext = photoname.rsplit('.', 1)[1].lower()
+    is_allowed = '.' in photoname and file_ext in ALLOWED_EXTENSIONS
+    print(f"파일명: {photoname}, 확장자: {file_ext}, 허용 여부: {is_allowed}")
+    return is_allowed
 
 def save_uploaded_photos(photos):
     photo_paths = []
@@ -23,11 +27,36 @@ def save_uploaded_photos(photos):
         if photo and allowed_file(photo.filename):
             filename = secure_filename(photo.filename)
             filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
-            photo.save(filepath)
-            photo_paths.append(filepath)
+            
+            try:
+                # 원본 이미지를 열고 크기 조정
+                image = Image.open(photo)
+                image.thumbnail(TARGET_SIZE, Image.Resampling.LANCZOS)  # 원본 비율 유지하면서 TARGET_SIZE에 맞춤
+
+                file_type = imghdr.what(filepath)
+                print(f"실제 파일 타입: {file_type}")
+                
+                # 패딩을 추가하여 정확한 TARGET_SIZE에 맞춤
+                delta_w = TARGET_SIZE[0] - image.size[0]
+                delta_h = TARGET_SIZE[1] - image.size[1]
+                padding = (delta_w // 2, delta_h // 2, delta_w - (delta_w // 2), delta_h - (delta_h // 2))
+                new_image = ImageOps.expand(image, padding, (255, 255, 255))  # 흰색 배경
+                
+                # new_image.save(filepath)  # 조정된 이미지를 저장
+                # photo_paths.append(filepath)
+
+                # 파일 확장자를 png로 변환하여 저장
+                png_filename = os.path.splitext(filename)[0] + '.png'
+                png_filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], png_filename)
+                new_image.save(png_filepath, 'PNG')
+                
+                photo_paths.append(png_filepath)
+            except Exception as e:
+                print(f"이미지 처리 중 오류 발생: {str(e)}")
         else:
             print(f'허용되지 않은 파일 형식: {photo.filename}')
     return photo_paths
+
 
 @upload.route('/api/upload', methods=['POST'])
 def upload_photos():

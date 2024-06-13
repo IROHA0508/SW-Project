@@ -106,7 +106,6 @@ function UserPhotoComponent({ postId, current_user, profileImage, posted_usernam
 
         <div className='photocomponent-photo-container'>
           <SimpleImageSlider
-            className = 'rsis-container'
             // width={718}
             width={718}
             height={504}
