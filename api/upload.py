@@ -23,8 +23,8 @@ def save_uploaded_photos(photos):
         if photo and allowed_file(photo.filename):
             filename = secure_filename(photo.filename)
             filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
-            # photo.save(filepath)
-            # photo_paths.append(filepath)
+            photo.save(filepath)
+            photo_paths.append(filepath)
             
             try:
                 image = Image.open(filepath)
