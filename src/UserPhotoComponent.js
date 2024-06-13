@@ -104,9 +104,11 @@ function UserPhotoComponent({ postId, current_user, profileImage, posted_usernam
           )}
         </div>
 
-        <div className='photo-container'>
+        <div className='photocomponent-photo-container'>
           <SimpleImageSlider
-            width={896}
+            className = 'rsis-container'
+            // width={718}
+            width={718}
             height={504}
             images={photos.map(photo => ({ url: photo }))}
             showBullets={true}

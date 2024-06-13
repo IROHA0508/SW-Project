@@ -165,9 +165,6 @@ const fetchUploadPhotos = async () => {
     setDMboxModalIsOpen(false);
   }
 
-  // 사진 배열 생성 후 사진 슬라이더로 활용
-  const example_photos = [photo_example1, photo_example2, photo_example3]; // 사진 배열
-
   const settings = {
     dots: true,
     infinite: true,
