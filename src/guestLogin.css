@@ -16,16 +16,18 @@
   width: 100%;
   max-width: 3150px;
   height: auto;
-  font-size: 1.5vw;
+  font-size: 1.7vw;
   text-align: left;
   padding-left: 2vw;
   color: #000;
   font-family: 'Kaushan Script', cursive;
   margin: 0%;
 
-  margin-left: 12%;
+  margin-left: 18%;
   margin-top: 2%;
 }
+
+
 
 .guest-main-button-container {
   display: flex;
@@ -39,7 +41,7 @@
   margin-top: 2%;
   align-self: stretch   ;
 
-  margin-left: -49%;
+  margin-left: -50%;
 }
 
 .guest-main-button-container p{
@@ -89,30 +91,30 @@
     width: 20.4241vw;
     height: 26.8481vw;
     position: absolute;
-    left: 28.7532vw;
-    top: 10.1013vw;
+    left: 34.7532vw;
+    top: 12.1013vw;
   }
   
   .guest-main-pic2 {
     width: 10.7722vw;
     height: 14.2215vw;
     position: absolute;
-    left: 17.1772vw;
-    top: 5.3734vw;
+    left: 23.1772vw;
+    top: 7.3734vw;
   }
   
   .guest-main-pic3 {
     width: 16.3734vw;
     height: 21.1646vw;
     position: absolute;
-    left: 11.5759vw;
-    top: 20.1076vw;
+    left: 17.5759vw;
+    top: 22.1076vw;
   }
 
   .guest-userList {
     position: fixed; /* 고정 위치로 설정하여 화면에 항상 고정 */
-    right: 0; /* 오른쪽 끝에 배치 */
-    top: 20%; /* 적절한 위쪽 여백 설정 */
+    left: 58.2468vw;
+    top: 11.2658vw;
     width: 20%; /* 너비 설정 */
     height: 60%; /* 높이 설정 */
     margin-right: 500px; /* 오른쪽 여백 설정 */
