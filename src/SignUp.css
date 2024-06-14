@@ -1,4 +1,24 @@
-.input-container {
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
+
+.signup-container {
+  display: flex;
+  justify-content: center; /* 가로 방향 가운데 정렬 */
+  align-items: center; /* 세로 방향 가운데 정렬 */
+  width: 100%; /* 부모 요소의 가로 길이에 맞게 설정 */
+  height: 100vh; /* 화면 전체 높이만큼 컨테이너 높이 설정 */
+  font-size: 20px;
+
+}
+  
+.signup-form-container {
+  border: 3px solid #a094c4; /* 폼에만 테두리 설정 */
+  width: 25%;
+  height: 70%;
+  padding: 30px; /* 내부 여백 설정 */
+  border-radius: 20px; /* 테두리의 둥근 모서리 설정 */
+}
+
+.signup-input-container {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -19,40 +39,36 @@
   box-shadow: 0vw 0.0316vw 0.0633vw 0 rgba(0, 0, 0, 0.05);
 }
 
-.input-container input {
+.signup-input-container input {
   width: 100%; /* 입력칸의 너비를 100%로 설정하여 부모 요소의 너비에 맞춤 */
   height: 40px; /* 입력칸의 높이를 40px로 설정 */
   font-size: 20px;
 }
 
-.container {
-  display: flex;
-  justify-content: flex-end; /* 가로 방향 가운데 정렬 */
-  align-items: center; /* 세로 방향 가운데 정렬 */
-  height: 100vh; /* 화면 전체 높이만큼 컨테이너 높이 설정 */
-  margin-right: 40px;
-  font-size: 20px;
-}
 
-.form-container {
-  border: 2px solid #000; /* 폼에만 테두리 설정 */
-  width: 370px;
-  height: 700px;
-  padding: 80px; /* 내부 여백 설정 */
-  border-radius: 20px; /* 테두리의 둥근 모서리 설정 */
-}
-
-.form-container h1 {
+.signup-form-container h1 {
   text-align: center; /* 텍스트를 수평 가운데 정렬 */
+  font-family: 'NanumSquare', sans-serif ;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333; 
+  margin: 0;
   font-size: 50px;
 }
 
-.form-container button {
+.signup-form-container button {
   display: block;
   margin: 0 auto;
-  margin-top: 60px;
-  font-size: 20px;
+  margin-top: 40px;
+  font-size: 25px;
+
+  background-color: #6667AB;
 }
+
+.signup-form-container button:hover {
+  background-color: #4b4b7c;
+}
+
 
 .signup-button {
   /* position: absolute; */
@@ -64,13 +80,13 @@
   left: 0vw;
   top: 7vw;
   gap: 0.2532vw;
+  margin-top: 40px;
   padding-left: 0.7vw;
   padding-right: 0.7vw;
   padding-top: 0.3vw;
   padding-bottom: 0.3vw;
   border-radius: 0.2532vw;
-  background: rgb(147, 112, 219);
-  /* #c69affce */
+  background-color: #6667AB;
   box-shadow: 0.0000vw 0.0316vw 0.0633vw 0 rgba(129, 150, 252, 0.05);
   flex-grow: 0;
   flex-shrink: 0;

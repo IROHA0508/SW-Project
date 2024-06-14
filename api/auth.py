@@ -98,3 +98,16 @@ def get_user_nickname():
     
     users_list = [{'id': user[0], 'nickname': user[1]} for user in results]
     return jsonify(users_list)
+
+@auth.route('/api/getusernicknameguest', methods=['GET'])
+def get_user_nickname_guest():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # 사용자 목록 조회
+    cursor.execute('SELECT id, nickname FROM users ORDER BY id ASC')
+    results = cursor.fetchall()
+    conn.close()
+    
+    users_list = [{'id': user[0], 'nickname': user[1]} for user in results]
+    return jsonify(users_list)

@@ -31,6 +31,11 @@ function Main() {
   const [userList_name, setUserList_name] = useState([]);
   //업로드 사진 목록
   const [uploadPhotos, setUploadPhotos] = useState([]);
+  // 키워드 검색
+  const [searchKeyword, setSearchKeyword] = useState('');
+  // 검색 결과
+  const [searchResults, setSearchResults] = useState([]);
+  // 로딩 상태 
 
   useEffect(()=>{
     fetchUserInfo();
@@ -121,6 +126,27 @@ const fetchUploadPhotos = async () => {
   }
   };
 
+  const searchPhotos = async () => {
+    try {
+      const response = await fetch(`/api/searchphotos?keyword=${searchKeyword}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);  
+        setSearchResults(data);
+      } else {
+        console.error('검색 결과를 가져오는 데 실패했습니다');
+      }
+    } catch (error) {
+      console.error('검색 결과를 가져오는 중 오류 발생', error);
+    }
+  };
+
   //모달 열기
   const openModal = () => {
     setModalOpen(true);
@@ -139,9 +165,6 @@ const fetchUploadPhotos = async () => {
     setDMboxModalIsOpen(false);
   }
 
-  // 사진 배열 생성 후 사진 슬라이더로 활용
-  const example_photos = [photo_example1, photo_example2, photo_example3]; // 사진 배열
-
   const settings = {
     dots: true,
     infinite: true,
@@ -149,6 +172,9 @@ const fetchUploadPhotos = async () => {
     slidesToShow: 1,
     slidesToScroll: 1
   };
+
+  // 검색결과가 있을 경우 사용하고, 없을 시 기존의 uploadPhotos 사용
+  const displayedPhotos = searchKeyword ? searchResults : uploadPhotos;
 
   return (
     <div>
@@ -159,10 +185,11 @@ const fetchUploadPhotos = async () => {
 
         <div className='main-button-container'>
           <p>{nickname} 님</p>
-          <button className="main-header-button" onClick={handleDMboxclick}>DM</button>
-          <button className="main-header-button" onClick={openModal}>UpLoad</button>
-          <button className="main-header-button" onClick={handleLogout}>Log Out</button>        
+          <button className='main-header-button' onClick={handleDMboxclick}> DM </button>
+          <button className='main-header-button' onClick={openModal}> Upload </button>
+          <button className='main-header-button' onClick={handleLogout}> Log Out </button>        
         </div>
+
       </div>
 
       <DMboxModal isOpen = {modalDMboxIsOpen} closeModal={closeDMboxModal} current_username={nickname}/>
@@ -173,35 +200,42 @@ const fetchUploadPhotos = async () => {
           
           <div className='searchbar-container' id='searchbar'>
             <img src={searchicon} className="search-icon" alt="search icon"/>
-            <input type="text" className="search-input" placeholder="여기는 검색하는 곳입니다" />
-            <button className="search-button">검색</button>
+            <input 
+              type="text" 
+              className="search-input" 
+              placeholder="여기는 검색하는 곳입니다" 
+              value={searchKeyword}
+              onChange={(e) => setSearchKeyword(e.target.value)}
+            />
+            <button className="search-button" onClick={searchPhotos}>검색</button>
           </div>
 
           <div className='main-user-content'>
             <div className='main-userPhoto'>
-
-              {/* {uploadPhotos.map(photo => (
-                <div key={photo.id}>
+              {displayedPhotos.map(photo => {
+                console.log(photo.photo_urls);
+                return(
                   <UserPhotoComponent
-                    photoId={photo.id}
+                    key={photo.id}
+                    postId={photo.id}
                     current_user={nickname}
                     profileImage={profile}
-                    poseted_username={photo.nickname}
-                    photos={`data:image/jpeg;base64,${photo.photo_data}`}
+                    posted_username={photo.nickname}
+                    photos={photo.photo_urls}
                     hashtags={photo.hashtags}
                     description={photo.description}
                   />
-                </div>
-              ))} */}
+                );    
+              })}
 
-              <UserPhotoComponent 
+              {/* <UserPhotoComponent 
                 current_user={nickname}
                 profileImage={profile}
                 posted_username="유애나"
-                photos={photo_example2}
+                photos={example_photos}
                 hashtags={['아이유']}
                 description="아이유 인천공항 (사진에 대한 설명이 들어갑니다)"
-              />
+              /> */}
             </div>
             
             <div className='userList'>

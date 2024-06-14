@@ -12,9 +12,9 @@ function Common_header() {
         </p>
       
         <div className='commonheader-button-container'>
-            <a href="about.html" className='commonheader-button'>
+            <Link to = '/aboutus' className='commonheader-button'>
               <button>About US</button>
-            </a>
+            </Link>
 
             <Link to = '/signup' className='commonheader-button'>
               <button>회원가입</button>

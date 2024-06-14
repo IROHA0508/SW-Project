@@ -5,7 +5,7 @@ def init_db():
     print("Opened database successfully")
 
     conn.execute('''
-        CREATE TABLE IF NOT EXISTS users(
+        CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             email TEXT UNIQUE NOT NULL,
             password TEXT NOT NULL,
@@ -14,10 +14,9 @@ def init_db():
     ''')
 
     conn.execute('''
-        CREATE TABLE IF NOT EXISTS photos (
+        CREATE TABLE IF NOT EXISTS post (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_id INTEGER NOT NULL,
-            photo_url TEXT NOT NULL,
             description TEXT,
             upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY(user_id) REFERENCES users(id)
@@ -27,9 +26,19 @@ def init_db():
     conn.execute('''
         CREATE TABLE IF NOT EXISTS keywords (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            photo_id INTEGER NOT NULL,
+            post_id INTEGER NOT NULL,
             keyword TEXT NOT NULL,
-            FOREIGN KEY(photo_id) REFERENCES photos(id)
+            FOREIGN KEY(post_id) REFERENCES post(id)
+        ) 
+    ''')
+    
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS photos (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            post_id INTEGER NOT NULL,
+            photo_url TEXT NOT NULL,
+            photoname TEXT NOT NULL,
+            FOREIGN KEY(post_id) REFERENCES post(id)
         ) 
     ''')
 
@@ -39,7 +48,6 @@ def init_db():
             message_id INTEGER PRIMARY KEY AUTOINCREMENT,
             sender_id INTEGER NOT NULL,
             receiver_id INTEGER NOT NULL,
-            title TEXT NOT NULL,
             message TEXT NOT NULL,
             timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             status TEXT DEFAULT 'unread',

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import './replyDMModal.css';
-import close_button from './close_button.png';
-import message_send_button from './message_send_button.png';
 
 Modal.setAppElement('#root');
 
@@ -45,7 +43,7 @@ function ReplyDMModal({ isOpen, onClose, onSendReply, currentUsername, receiverU
       console.log('Response from sending message:', data);
       if (response.ok) {
         console.log('Message sent successfully:', data);
-        alert('메세지가 성공적으로 저장되었습니다.');
+        alert('메세지가 전송되었습니다');
         setMessage('');
         setTitle('');
         onClose();
@@ -75,9 +73,6 @@ function ReplyDMModal({ isOpen, onClose, onSendReply, currentUsername, receiverU
             <p>받는 사람: {receiverUsername}</p>
           </div>
         </div>
-        <div className='reply-close-button-container'>
-          <img src={close_button} className='close-button' alt='close' onClick={onClose} />
-        </div>
       </div>
 
       <div className='reply-modal-message-titleinput'>
@@ -101,13 +96,15 @@ function ReplyDMModal({ isOpen, onClose, onSendReply, currentUsername, receiverU
         />
       </div>
 
-      <div className='reply-sendbutton-container'>
-        <img
-          src={message_send_button}
-          className='message-send-button'
+      <div className='reply-dmmodal-button-container'>
+        <button className='reply-message-send-button' onClick={sendMessage}>Send</button>
+        <button className='reply-close-dmmodal-button' onClick={onClose}>Close</button>
+        {/* <img 
+          src={message_send_button} 
+          className='message-send-button' 
           alt='send'
           onClick={sendMessage}
-        />
+        /> */}
       </div>
     </Modal>
   );
