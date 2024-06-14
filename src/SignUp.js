@@ -61,7 +61,7 @@ function SignUp() {
             <div className='signup-input-container'>
               <input
                 type="email"
-                placeholder='이메일 주로를 입력하세요'
+                placeholder='이메일 주소를 입력하세요'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
